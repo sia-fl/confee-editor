@@ -9,7 +9,6 @@ import { InlineCompletionProvider } from './InlineCompletionProvider';
 import { Document } from '../../models';
 import { editor } from 'monaco-editor';
 import * as monaco from 'monaco-editor';
-import getModels = editor.getModels;
 
 export interface CodeiumEditorProps extends EditorProps {
   language: string;
@@ -81,6 +80,7 @@ export const CodeiumEditor: React.FC<CodeiumEditorProps> = ({
   ...props
 }) => {
   const monacoRef = useRef<Monaco | null>(null);
+  const [mounted, setMounted] = useState(false);
   const inlineCompletionsProviderRef = useRef<InlineCompletionProvider | null>(
     null,
   );
@@ -96,6 +96,37 @@ export const CodeiumEditor: React.FC<CodeiumEditorProps> = ({
   const grpcClient = useMemo(() => {
     return createPromiseClient(LanguageServerService, transport);
   }, [transport]);
+
+  useEffect(() => {
+    if (mounted) {
+      const providerDisposable =
+        monaco.languages.registerInlineCompletionsProvider(
+          { pattern: '**' },
+          inlineCompletionsProviderRef.current as any,
+        );
+      const completionDisposable = monaco.editor.registerCommand(
+        'codeium.acceptCompletion',
+        (_: unknown, completionId: string, insertText: string) => {
+          try {
+            if (props.onAutocomplete) {
+              props.onAutocomplete(insertText);
+            }
+            setAcceptedCompletionCount(acceptedCompletionCount + 1);
+            inlineCompletionsProviderRef.current?.acceptedLastCompletion(
+              completionId,
+            );
+          } catch (err) {
+            console.log('Err');
+          }
+        },
+      );
+
+      return () => {
+        providerDisposable.dispose();
+        completionDisposable.dispose();
+      };
+    }
+  }, [mounted]);
 
   inlineCompletionsProviderRef.current = useMemo(() => {
     return new InlineCompletionProvider(
@@ -131,7 +162,6 @@ export const CodeiumEditor: React.FC<CodeiumEditorProps> = ({
           monaco.languages.typescript.ModuleResolutionKind.NodeJs,
         module: monaco.languages.typescript.ModuleKind.ESNext,
         target: monaco.languages.typescript.ScriptTarget.ESNext,
-        strict: true,
         noImplicitAny: true,
       });
       const models = monaco.editor.getModels();
@@ -143,149 +173,126 @@ export const CodeiumEditor: React.FC<CodeiumEditorProps> = ({
         }
       }
       if (!model) {
-        model = monaco.editor.createModel(
+        const model = monaco.editor.createModel(
           ``,
           'typescript',
           monaco.Uri.parse(modelPathname),
         );
-      }
-      const editor = monaco.editor.create(monacoRef.current as any, {
-        model,
-        fontFamily: '"Jetbrains Mono", Courier, Consolas, monospace',
-        automaticLayout: true,
-        minimap: { enabled: false },
-        glyphMargin: false,
-        guides: {
-          indentation: true,
-        },
-      });
-      const providerDisposable =
-        monaco.languages.registerInlineCompletionsProvider(
-          { pattern: '**' },
-          inlineCompletionsProviderRef.current as any,
-        );
-      const completionDisposable = monaco.editor.registerCommand(
-        'codeium.acceptCompletion',
-        (_: unknown, completionId: string, insertText: string) => {
-          try {
-            if (props.onAutocomplete) {
-              props.onAutocomplete(insertText);
-            }
-            setAcceptedCompletionCount(acceptedCompletionCount + 1);
-            inlineCompletionsProviderRef.current?.acceptedLastCompletion(
-              completionId,
-            );
-          } catch (err) {
-            console.log('Err');
-          }
-        },
-      );
-      const values = (hiddenPart || '') + props.value;
-      editor.setValue(values || '');
-      if (hiddenPart) {
-        const end = hiddenPart.split('\n').length - 1;
-        // @ts-ignore
-        editor.setHiddenAreas([
-          {
-            startLineNumber: 1,
-            startColumn: 0,
-            endLineNumber: end,
-            endColumn: 0,
+        const editor = monaco.editor.create(monacoRef.current as any, {
+          model,
+          fontFamily: '"Jetbrains Mono", Courier, Consolas, monospace',
+          automaticLayout: true,
+          minimap: { enabled: false },
+          glyphMargin: false,
+          guides: {
+            indentation: true,
           },
-        ]);
-        editor.getModel()!.onDidChangeContent((e) => {
-          if (e.isUndoing || e.isRedoing || e.isEolChange) {
-            return;
-          }
-          const changes = e.changes.filter((it) => {
-            return it.range.startLineNumber < end;
-          });
-          if (changes.length === 0) {
-            return;
-          }
-          editor.trigger(null, 'undo', null);
-          changes
-            .filter((it) => {
-              return it.range.startLineNumber === it.range.endLineNumber;
-            })
-            .forEach((it) => {
-              editor.executeEdits(null, [
-                {
-                  range: {
-                    startColumn: 1,
-                    endColumn: 1,
-                    endLineNumber: end + 1,
-                    startLineNumber: end + 1,
-                  },
-                  text: it.text.trimStart(),
-                },
-              ]);
-            });
         });
-        editor.onKeyDown((e) => {
-          // prevent backspace
-          if (e.keyCode === 1) {
-            const selection = editor.getSelection();
-            if (!selection) {
+        const values = (hiddenPart || '') + props.value;
+        editor.setValue(values || '');
+        if (hiddenPart) {
+          const end = hiddenPart.split('\n').length - 1;
+          // @ts-ignore
+          editor.setHiddenAreas([
+            {
+              startLineNumber: 1,
+              startColumn: 0,
+              endLineNumber: end,
+              endColumn: 0,
+            },
+          ]);
+          editor.getModel()!.onDidChangeContent((e) => {
+            if (e.isUndoing || e.isRedoing || e.isEolChange) {
               return;
             }
-            if (
-              selection.startLineNumber === selection.endLineNumber &&
-              selection.startColumn === selection.endColumn &&
-              selection.startLineNumber === end + 1 &&
-              selection.startColumn === 1
-            ) {
+            const changes = e.changes.filter((it) => {
+              return it.range.startLineNumber < end;
+            });
+            if (changes.length === 0) {
+              return;
+            }
+            editor.trigger(null, 'undo', null);
+            changes
+              .filter((it) => {
+                return it.range.startLineNumber === it.range.endLineNumber;
+              })
+              .forEach((it) => {
+                editor.executeEdits(null, [
+                  {
+                    range: {
+                      startColumn: 1,
+                      endColumn: 1,
+                      endLineNumber: end + 1,
+                      startLineNumber: end + 1,
+                    },
+                    text: it.text.trimStart(),
+                  },
+                ]);
+              });
+          });
+          editor.onKeyDown((e) => {
+            // prevent backspace
+            if (e.keyCode === 1) {
+              const selection = editor.getSelection();
+              if (!selection) {
+                return;
+              }
+              if (
+                selection.startLineNumber === selection.endLineNumber &&
+                selection.startColumn === selection.endColumn &&
+                selection.startLineNumber === end + 1 &&
+                selection.startColumn === 1
+              ) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            }
+            // custom ctrl + a
+            if (e.keyCode === 31 && (e.ctrlKey || e.metaKey)) {
               e.preventDefault();
               e.stopPropagation();
+              editor.setSelection({
+                startLineNumber: hiddenPart.split('\n').length,
+                endLineNumber: 9999,
+                startColumn: 1,
+                endColumn: 9999,
+              });
             }
+          });
+        }
+
+        model.onDidChangeContent((e) => {
+          const change = e.changes[0]?.text;
+          if (!change) {
+            return;
           }
-          // custom ctrl + a
-          if (e.keyCode === 31 && (e.ctrlKey || e.metaKey)) {
-            e.preventDefault();
-            e.stopPropagation();
-            editor.setSelection({
-              startLineNumber: hiddenPart.split('\n').length,
-              endLineNumber: 9999,
-              startColumn: 1,
-              endColumn: 9999,
-            });
+          if (["'", '"'].findIndex((it) => change.startsWith(it)) !== -1) {
+            setTimeout(() => {
+              editor.trigger(null, 'editor.action.triggerSuggest', null);
+            }, 200);
           }
         });
+        /**
+         * 在 create 以后
+         */
+        try {
+          grpcClient.getCompletions({}).then(() => {
+            if (props.onMount) {
+              props.onMount(editor, monaco);
+            }
+          });
+        } catch (e) {
+          // This is expected.
+        }
       }
 
-      model.onDidChangeContent((e) => {
-        const change = e.changes[0]?.text;
-        if (!change) {
-          return;
-        }
-        if (["'", '"'].findIndex((it) => change.startsWith(it)) !== -1) {
-          setTimeout(() => {
-            editor.trigger(null, 'editor.action.triggerSuggest', null);
-          }, 200);
-        }
-      });
-
-      /**
-       * 在 create 以后
-       */
-      try {
-        // await grpcClient.getCompletions({}).then(() => {});
-        inlineCompletionsProviderRef.current?.updateOtherDocuments(
-          otherDocuments,
-        );
-        if (props.onMount) {
-          props.onMount(editor, monaco);
-        }
-      } catch (e) {
-        // This is expected.
-      }
-
-      return () => {
-        providerDisposable.dispose();
-        completionDisposable.dispose();
-      };
+      setMounted(true);
     }
-  }, [monacoRef.current]);
+  }, [monacoRef.current, inlineCompletionsProviderRef.current]);
+
+  useEffect(() => {
+    inlineCompletionsProviderRef.current?.updateOtherDocuments(otherDocuments);
+  }, [otherDocuments]);
 
   useEffect(() => {
     /**
