@@ -1,13 +1,13 @@
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { Document as DocumentInfo } from '../../api/proto/exa/language_server_pb/language_server_pb';
-import { Dispatch, SetStateAction } from 'react';
 import { PromiseClient } from '@connectrpc/connect';
-import { Status } from './Status';
 import { MonacoCompletionProvider } from './CompletionProvider';
 import { LanguageServerService } from '../../api/proto/exa/language_server_pb/language_server_connect';
+import { Status } from './CodeiumEditor';
 
 declare module 'monaco-editor' {
   namespace editor {
+    // noinspection JSUnusedGlobalSymbols
     interface ICodeEditor {
       _commandService: { executeCommand(command: string): unknown };
     }
@@ -17,22 +17,17 @@ declare module 'monaco-editor' {
 export class InlineCompletionProvider
   implements monaco.languages.InlineCompletionsProvider
 {
-  private numCompletionsProvided: number;
   readonly completionProvider: MonacoCompletionProvider;
 
   constructor(
     grpcClient: PromiseClient<typeof LanguageServerService>,
-    readonly setCompletionCount: Dispatch<SetStateAction<number>>,
-    setCodeiumStatus: Dispatch<SetStateAction<Status>>,
-    setCodeiumStatusMessage: Dispatch<SetStateAction<string>>,
+    setCodeiumStatus?: (status: Status) => void,
     apiKey?: string | undefined,
     multilineModelThreshold?: number | undefined,
   ) {
-    this.numCompletionsProvided = 0;
     this.completionProvider = new MonacoCompletionProvider(
       grpcClient,
       setCodeiumStatus,
-      setCodeiumStatusMessage,
       apiKey,
       multilineModelThreshold,
     );
@@ -45,23 +40,14 @@ export class InlineCompletionProvider
   async provideInlineCompletions(
     model: monaco.editor.ITextModel,
     position: monaco.Position,
-    context: monaco.languages.InlineCompletionContext,
+    _context: monaco.languages.InlineCompletionContext,
     token: monaco.CancellationToken,
   ) {
-    const completions = await this.completionProvider.provideInlineCompletions(
+    return await this.completionProvider.provideInlineCompletions(
       model,
       position,
       token,
     );
-    // Only count completions provided if non-empty (i.e. exclude cancelled
-    // requests).
-    // TODO(nick): don't count cached results either.
-    // TODO(nick): better distinguish warning and error states.
-    if (completions) {
-      this.numCompletionsProvided += 1;
-      this.setCompletionCount(this.numCompletionsProvided);
-    }
-    return completions;
   }
 
   public acceptedLastCompletion(completionId: string) {

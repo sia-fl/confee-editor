@@ -1,0 +1,6546 @@
+import type { ColumnType } from 'https://cdn.jsdelivr.net/npm/kysely/dist/esm/index.js';
+
+export type Generated<T> =
+  T extends ColumnType<infer S, infer I, infer U>
+    ? ColumnType<S, I | undefined, U>
+    : ColumnType<T, T | undefined, T>;
+
+export type Int8 = ColumnType<
+  string,
+  bigint | number | string,
+  bigint | number | string
+>;
+
+export type Numeric = ColumnType<string, number | string, number | string>;
+
+export type Timestamp = ColumnType<Date, Date | string, Date | string>;
+
+export interface BhgDestructionDetail {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept: string | null;
+  desc: string | null;
+  goods_id: string | null;
+  opinions: string | null;
+  qrr: string | null;
+  serial: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BhgReviewDisposal {
+  bhgly: string | null;
+  bhgp_defect_type: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  cys: string | null;
+  defect_type: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string | null;
+  make_no: string | null;
+  qty: string | null;
+  spec: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string | null;
+}
+
+export interface BusBadFeedbackManage {
+  age: string;
+  bad_feedback_date: Timestamp;
+  bad_feedback_type: string;
+  bad_reaction_analysis: string | null;
+  bgr: string;
+  complaint_order_no: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deal_result: string | null;
+  deleted_at: Timestamp | null;
+  gender: string;
+  id: string;
+  invoice_id: string;
+  lx_mobile: string;
+  makeno: string;
+  name: string;
+  product_id: string;
+  sln: string | null;
+  start_used_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zz: string;
+}
+
+export interface BusBanCatalog {
+  cn_name: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  en_name: string | null;
+  id: string;
+  remark: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBcpReportCheckItem {
+  单位: string | null;
+  check_id: string;
+  check_item: string;
+  check_result: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  single_testing_result: string | null;
+  std_value: string | null;
+  tenant_id: string;
+  testing_equipment: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBcpysDetection {
+  batch_qty: Numeric;
+  check_yj: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  detection_date: Timestamp;
+  goods_id: string;
+  id: string;
+  inspector: string;
+  inspector_result: string | null;
+  make_date: Timestamp;
+  sample_count: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBcpysDetectionProject {
+  check_id: string;
+  check_item: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  single_testing_result: string;
+  std_value: string | null;
+  tenant_id: string;
+  testing_device: string | null;
+  testing_valu: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBcpysReport {
+  batch: string;
+  check_yj: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  detection_date: Timestamp;
+  goods_id: string;
+  goods_name: string;
+  make_date: Timestamp;
+  order_id: string;
+  remedial_measures: string | null;
+  rhph: string;
+  sample_count: string;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBhgConfirm {
+  confirm_order_no: string;
+  confirm_unit: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBhgConfirmDetail {
+  amount: Numeric | null;
+  bhg_yy: string;
+  confirm_order_no: string;
+  confirm_qty: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  inv_date: string;
+  makeno: string;
+  purprice: Numeric | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string | null;
+}
+
+export interface BusBhgDestroy {
+  confirm_order_no: string;
+  confirm_unit: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  destroy_date: Timestamp;
+  destroy_order_no: string;
+  id: string;
+  status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  xhr: string;
+}
+
+export interface BusBhgDestroyDetail {
+  amt: Numeric | null;
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  destroy_order_no: string;
+  destroy_qty: Numeric;
+  goods_id: string;
+  id: string;
+  idno: string | null;
+  inv_date: string;
+  makeno: string;
+  purprice: string | null;
+  serial: string;
+  stallno: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string | null;
+}
+
+export interface BusBhgDestructionDetail {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept: string | null;
+  desc: string | null;
+  goods_id: string | null;
+  opinions: string | null;
+  qrr: string | null;
+  serial: number | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBhgReviewDisposal {
+  bhgly: string | null;
+  bhgp_defect_type: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  cys: Numeric | null;
+  defect_type: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string | null;
+  id: string | null;
+  make_no: string | null;
+  qty: Numeric | null;
+  spec: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string | null;
+}
+
+export interface BusBomMaster {
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  product_id: string;
+  technology_route_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBomMaterial {
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goodsqty: Numeric;
+  group_id: string;
+  id: string;
+  loss_rate: Generated<Numeric>;
+  produce_type: string;
+  product_id: string;
+  purprice: Numeric | null;
+  ratio: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBomPackage {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  loss_rate: Generated<Numeric>;
+  price: Numeric;
+  produce_type: string;
+  product_id: string;
+  qyt: Numeric;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusBomTechnology {
+  action: string;
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  device: string | null;
+  distinction: string | null;
+  id: string;
+  material: string | null;
+  process_sesc: string | null;
+  product_id: string;
+  serial: string;
+  target: string | null;
+  target_unit: string | null;
+  target_value: Numeric | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCheckRuleDetail {
+  average: string | null;
+  category: string;
+  check_rate: string;
+  check_type: string;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  crowd: string;
+  net_content: string | null;
+  reference_basis: string | null;
+  remark: string | null;
+  serial: number;
+  serious: string | null;
+  slight: string | null;
+  standard: string;
+  storage_conditions: string;
+  tenant_id: string;
+  testing_content: string;
+  testing_items: string;
+  testing_result: string;
+  type: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusCompany {
+  begin_date: Timestamp | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  email: string | null;
+  end_date: Timestamp | null;
+  fr_name: string | null;
+  id: string;
+  if_kp: number;
+  is_ff: number;
+  name: string;
+  phone: string | null;
+  tenant_id: string | null;
+  test_end_date: Timestamp;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  usc_id: string;
+}
+
+export interface BusCompanyDetail {
+  begin_date: Timestamp | null;
+  bill_no: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  end_date: Timestamp | null;
+  id: string;
+  is_ff: number;
+  is_kp: number;
+  jf_amt: Numeric | null;
+  jf_date: Timestamp | null;
+  tenant_id: string;
+  test_end_date: Timestamp;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyGroup {
+  address: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  group_code: string;
+  id: string;
+  lxr: string | null;
+  mobile: string | null;
+  name: string | null;
+  service_at: Timestamp | null;
+  service_end: Timestamp | null;
+  sfz: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyGroupCustomerCateSetting1 {
+  cate_group_id: string;
+  cate_group_name: string;
+  cate_id: string;
+  cate_name: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  platform_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyGroupDetail {
+  bill_no: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  group_code: string;
+  id: string;
+  is_bind: number | null;
+  is_confirm: number | null;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyGroupMaterialCheckItem {
+  check_id: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyGroupMaterialLicense {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  file_upload: string | null;
+  goods_id: string;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_id: string;
+  license_name: string | null;
+  license_no: string | null;
+  platform_id: string | null;
+  start_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyGroupProductAllow {
+  company_group_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  product_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyGroupSupplierBusinessCate {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_business: string | null;
+  platform_id: string | null;
+  range_id: string;
+  range_name: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusCompanyGroupSupplierCateSetting {
+  cate_group_id: string;
+  cate_group_name: string | null;
+  cate_id: string;
+  cate_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusCompanyGroupSupplierLicense {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  file_upload: string | null;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_id: string;
+  license_name: string;
+  license_no: string;
+  platform_id: string | null;
+  start_date: Timestamp | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusCompanyMaterialSet {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  group_code: string;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyPackageCate {
+  cate_group_id: string;
+  cate_group_name: string | null;
+  cate_id: string;
+  cate_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  platform_id: string | null;
+  priority_level: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyPackageCheckItem {
+  check_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyPackageLicense {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  file_upload: string | null;
+  goods_id: string;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_id: string;
+  license_name: string;
+  license_no: string;
+  platform_id: string | null;
+  start_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanyPackageList {
+  alias: string | null;
+  barcode: string | null;
+  brand: string | null;
+  business_range: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  is_stock: Generated<number>;
+  material_type: string;
+  min_price: Numeric | null;
+  min_stock: number | null;
+  package_name: string;
+  place_of_origin: string;
+  platform_id: string | null;
+  produce_factory: string | null;
+  produce_license: string | null;
+  purchase_price: Numeric | null;
+  registration_id: string | null;
+  remark: string | null;
+  sale_price: Numeric | null;
+  spec: string;
+  tenant_id: string;
+  unit: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  validity_day_count: number | null;
+  weight: number | null;
+  zjm: string;
+}
+
+export interface BusCompanyPackageSet {
+  company_group_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCompanySupplierOutsourceSet {
+  company_group_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusCompanySupplierSet {
+  company_group_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusContractManage {
+  contract_order_no: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string | null;
+  customer_name: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  salesman: string;
+  settlement_method: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusContractManageDetail {
+  contract_manage_id: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  delivery_time: string;
+  goods_id: string | null;
+  goods_name: string | null;
+  id: string;
+  order_qty: Numeric;
+  price: Numeric;
+  price_amount: Numeric;
+  select: string | null;
+  serial: string | null;
+  spec: string | null;
+  stock: Numeric | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCpReportCheckItem {
+  check_id: string;
+  check_item: string;
+  check_result: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  single_testing_result: string | null;
+  std_value: string | null;
+  tenant_id: string;
+  testing_equipment: string | null;
+  unit: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCpysDetection {
+  batch_qty: Numeric;
+  check_yj: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  detection_date: Timestamp;
+  goods_id: string;
+  goods_name: string;
+  id: string;
+  inspector: string;
+  make_date: Timestamp;
+  pmph: string | null;
+  sample_count: string;
+  spec: string;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCpysDetectionProject {
+  check_id: string;
+  check_item: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  single_testing_result: string;
+  std_value: string | null;
+  tenant_id: string;
+  testing_device: string | null;
+  testing_valu: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCpysReport {
+  batch: string;
+  check_yj: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  detection_date: Timestamp;
+  goods_id: string;
+  goods_name: string;
+  make_date: Timestamp;
+  order_id: string;
+  pmph: string | null;
+  remedial_measures: string | null;
+  rhph: string;
+  sample_count: string;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomAccount {
+  batch_no: string | null;
+  billcode: string;
+  billno: string;
+  buyer: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  dept: string | null;
+  dept_user: string | null;
+  direct: string;
+  disamt: string | null;
+  execdate: string | null;
+  goods_id: string;
+  goods_qty: Numeric | null;
+  goods_type: string | null;
+  id: string;
+  idno: string | null;
+  invoice: Numeric | null;
+  invoice_status: string | null;
+  notes: string | null;
+  payedqty: Numeric | null;
+  paytype: string | null;
+  purtax: string | null;
+  realpayqty: Numeric | null;
+  saleprice: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string;
+  whlprice: Numeric | null;
+}
+
+export interface BusCustomer {
+  account: string | null;
+  city: string;
+  code: string;
+  company_address: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  credit_day_count: number | null;
+  credit_quota: Numeric | null;
+  deleted_at: Timestamp | null;
+  fr_gender: string | null;
+  fr_mobile: string | null;
+  fr_name: string | null;
+  fr_sfz: string | null;
+  id: string;
+  kh_address: string | null;
+  kh_bank: string | null;
+  kh_mobile: string | null;
+  kh_name: string | null;
+  lxr: string;
+  lxr_gender: string;
+  mobile: string;
+  name: string;
+  nsr_sbh: string | null;
+  origin: string;
+  province: string;
+  sfz: string | null;
+  sh_address: string;
+  source_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerBusinessCate {
+  code: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_business: number;
+  name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerCate {
+  cate_group_id: string;
+  cate_id: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerCompanyGroupAllow {
+  company_group_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerLicense {
+  created_at: Timestamp;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  filelist: string | null;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_no: string;
+  name: string;
+  start_date: Timestamp;
+  tenant_id: string;
+  type: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerSupplyQualityCheck {
+  chy: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  dh_date: Timestamp | null;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  quality_check_order_no: string;
+  salesman: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerSupplyQualityCheckDetail {
+  bhg_count: Numeric | null;
+  check_count: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  hg_count: Numeric;
+  id: string;
+  inv_date: Timestamp;
+  make_date: Timestamp;
+  makeno: string;
+  quality_check_order_no: string;
+  quality_check_result: string | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerSupplyQualityCheckItem {
+  check_id: string;
+  check_item: string | null;
+  check_method: string | null;
+  check_result: string | null;
+  check_std_value: string | null;
+  check_type: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  quality_check_order_no: string;
+  remark: string | null;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerSupplyRk {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  custno: string;
+  deleted_at: Timestamp | null;
+  execdate: Timestamp;
+  id: string;
+  in_user: string;
+  orig_no: string;
+  rk_no: string;
+  sh_type: string | null;
+  status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string | null;
+}
+
+export interface BusCustomerSupplyRkDetail {
+  入库单号: string;
+  batch_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  inv_date: Timestamp;
+  make_date: Timestamp;
+  price: Numeric;
+  price_amount: Numeric;
+  rk_count: Numeric;
+  serial: number;
+  stall_no: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerSupplySh {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_status: string;
+  sh_date: Timestamp;
+  sh_order_no: string;
+  sh_person: string;
+  sh_type: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusCustomerSupplyShDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dh_count: Numeric;
+  goods_id: string;
+  id: string;
+  inv_date: Timestamp;
+  make_date: Timestamp;
+  makeno: string;
+  price: Numeric | null;
+  price_amount: Numeric | null;
+  serial: string;
+  sh_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string;
+}
+
+export interface BusCustomerSupplyStock {
+  available_qty: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  stock_count: Numeric;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  wait_outbound_count: Numeric | null;
+}
+
+export interface BusCustomerSupplyStockDetail {
+  available_qty: string | null;
+  batch_id: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  inv_date: string;
+  make_date: string;
+  makeno: string;
+  sbh: string | null;
+  stock_count: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  wait_outbound_count: string | null;
+}
+
+export interface BusCustomerSupplyStockSearch {
+  id: string;
+}
+
+export interface BusCustomerSupplyStockSearchDetail {
+  id: string;
+}
+
+export interface BusCustomerSupplyYs {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_status: string;
+  sh: string;
+  sh_type: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  ys_date: Timestamp;
+  ys_order_no: string;
+  ysr: string;
+}
+
+export interface BusCustomerSupplyYsDetail {
+  batch_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  inspection_report: string | null;
+  inv_date: Timestamp;
+  make_date: Timestamp;
+  price: Numeric | null;
+  price_amount: Numeric | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  ys_hg_count: Numeric;
+  ys_order_no: string;
+}
+
+export interface BusCustomPayapplyC {
+  allstoreqty: string | null;
+  batch_no: string | null;
+  billcode: string | null;
+  billno: string | null;
+  buyer: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  goods_id: string | null;
+  id: string | null;
+  idno: string | null;
+  invoice: Numeric | null;
+  invoiced: Numeric | null;
+  invoiceno: string | null;
+  notes: string | null;
+  payedqty: Numeric | null;
+  payqty: Numeric | null;
+  purprice: Numeric | null;
+  purqty: Numeric | null;
+  purtax: string | null;
+  rowid: string | null;
+  stallmo: string | null;
+  storeqty: Numeric | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusCustomPayapplyM {
+  accamt: string | null;
+  applyno: string | null;
+  bak1: string | null;
+  bak2: string | null;
+  bak3: string | null;
+  billcode: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  customer_id: string;
+  deptno: string | null;
+  execdate: string | null;
+  goods_type: string | null;
+  id: string;
+  status: string | null;
+  storeamt: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusCustomPrepayC {
+  bank: string | null;
+  bankno: string | null;
+  buyer: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  customer_id: string | null;
+  dept: string | null;
+  dept_user: string | null;
+  execdate: Timestamp | null;
+  goods_id: string | null;
+  goods_qty: Numeric | null;
+  id: string;
+  invoice: Numeric | null;
+  orderno: string | null;
+  payedqty: string | null;
+  paytype: string | null;
+  prepayno: string | null;
+  purprice: Numeric | null;
+  purtax: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusCustomPrepayM {
+  bank: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  customer_id: string | null;
+  dept_user: string | null;
+  execdate: string | null;
+  id: string;
+  prepayno_m: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusDeliveryTruckCheckItem {
+  check_item: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string | null;
+  id: string;
+  serial: string | null;
+  single_testing_result: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusDeliveryTruckInspect {
+  chccph: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  date: Timestamp | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  inspector: string | null;
+  pmph: string | null;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusDispatchQualityCheck {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dispatch_date: Timestamp;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  pdy: string;
+  quality_check_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusDispatchQualityCheckDetail {
+  bhg_count: Numeric | null;
+  check_count: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  hg_count: Numeric | null;
+  id: string;
+  inv_date: Timestamp;
+  make_date: Timestamp;
+  makeno: string;
+  process_id: string;
+  process_name: string;
+  quality_check_order_no: string;
+  quality_check_result: string | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusDispatchQualityCheckItem {
+  check_id: string;
+  check_item: string;
+  check_method: string;
+  check_result: string;
+  check_std_value: string;
+  check_type: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  quality_check_order_no: string;
+  remark: string | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusEnvTestManage {
+  check_conclusion: string;
+  check_date: Timestamp;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  inspection_area: string;
+  invoice_id: string;
+  jcr: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusEnvTestManageDetail {
+  check_content: string;
+  check_item: string;
+  check_value: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_id: string;
+  is_hg: string;
+  serial: number;
+  standard_require: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFilingM {
+  annex: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  file_type: string;
+  id: string;
+  project_order_no: string;
+  serial: Generated<number>;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusFillingProcessInspectionDetail {
+  canning_material: string | null;
+  clean_pre_record: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  disinfect_measure: string | null;
+  electronic_scale_check: string | null;
+  goods_id: string;
+  goods_name: string;
+  health: string | null;
+  id: string;
+  inspection_time: string | null;
+  jcr: string | null;
+  labeling_information: string | null;
+  net_content: string | null;
+  net_content_average: string | null;
+  order_id: string;
+  package_accessory: string | null;
+  produce_batch: string | null;
+  produce_number: string | null;
+  qchjl: string | null;
+  remark: string | null;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFillingSjInspect {
+  canning_list: string | null;
+  check_chance: string | null;
+  check_yj: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  order_count: string | null;
+  order_id: string;
+  product_id: string;
+  qyy: string | null;
+  rhph: string | null;
+  scxb: string;
+  std_canning: string | null;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  xyy: string | null;
+  ybs: string | null;
+}
+
+export interface BusFillingSjInspectDetail {
+  check_item: string;
+  check_std_value: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  qyy_decide: string;
+  remark: string | null;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  xyy_decide: string;
+}
+
+export interface BusFinacceptC {
+  acceptno: string | null;
+  apply_qty: string | null;
+  batch_no: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  goods_id: string | null;
+  goods_qty: string | null;
+  id: string | null;
+  idno: string | null;
+  inv_date: string | null;
+  make_date: string | null;
+  makeno: string | null;
+  stallno: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  warehouse: string | null;
+}
+
+export interface BusFinacceptM {
+  accept_user: string | null;
+  acceptno: string | null;
+  created_by: string;
+  created_time: Timestamp;
+  dept: string | null;
+  execdate: Timestamp | null;
+  id: string;
+  source_no: string | null;
+  source_type: string | null;
+  tenant_id: string;
+  updated_by: string;
+  updated_time: Timestamp;
+  warehouse: string | null;
+}
+
+export interface BusFinishedProductCate {
+  cate_group_id: string;
+  cate_group_name: string | null;
+  cate_id: string;
+  cate_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  platform_id: string | null;
+  priority_level: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFinishedProductCheckItem {
+  check_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFinishedProductLicense {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  file_upload: string | null;
+  goods_id: string;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_id: string;
+  license_name: string;
+  license_no: string;
+  platform_id: string | null;
+  start_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFinishedProductStockC {
+  available_qty: Numeric | null;
+  await_qty: Numeric | null;
+  batch_no: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  idno: string;
+  stallno: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+}
+
+export interface BusFinishedProductStockI {
+  batck_no: string | null;
+  buyer: string | null;
+  created_by: string;
+  created_time: Timestamp;
+  flag: string | null;
+  goods_id: string;
+  id: string;
+  idno: string | null;
+  inv_date: string | null;
+  make_date: string | null;
+  makeno: string | null;
+  payeetype: string | null;
+  purprice: string | null;
+  purqty: string | null;
+  purtax: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string | null;
+}
+
+export interface BusFinishedProductStockM {
+  available_qty: Numeric | null;
+  await_sumqty: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_sumqty: Numeric | null;
+  id: string;
+  lastm2qty: Numeric | null;
+  lastm3qty: Numeric | null;
+  lastmqty: Numeric | null;
+  maxday: Numeric | null;
+  maxqty: Numeric | null;
+  minday: Numeric | null;
+  minqty: Numeric | null;
+  storpurice: Numeric | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFormulaDesign {
+  brand: string | null;
+  cost_total: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  dby: string | null;
+  deleted_at: Timestamp | null;
+  end_date: Timestamp | null;
+  engineer: string;
+  formula_order_no: string;
+  formula_version: string;
+  id: string;
+  net_content: number;
+  product_name: string;
+  project_order_no: string;
+  salesman: string | null;
+  spec: string;
+  start_date: Timestamp;
+  status: Generated<string | null>;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFormulaDesignCate {
+  cate_group_id: string;
+  cate_group_name: string;
+  cate_id: string;
+  cate_name: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  formula_order_no: string;
+  id: string;
+  project_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFormulaDesignMaterial {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  distinction: string | null;
+  formula_order_no: string;
+  goods_id: string;
+  id: string;
+  price: Numeric | null;
+  produce_type: string | null;
+  project_order_no: string | null;
+  purpose_of_use: string | null;
+  qty: Numeric | null;
+  ratio: Numeric;
+  reg_no: string | null;
+  serial: Generated<number>;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFormulaDesignRequire {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string;
+  develop_bus_project: string | null;
+  formula_order_no: string;
+  fzr: string;
+  id: string;
+  plan_end_date: Timestamp | null;
+  progress_status: string;
+  project_order_no: string | null;
+  research_desc: string | null;
+  research_item: string | null;
+  serial: number;
+  start_date: Timestamp | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusFormulaDesignTechnology {
+  action: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  device: string;
+  distinction: string | null;
+  formula_order_no: string;
+  id: string;
+  material: string;
+  process_desc: string | null;
+  project_order_no: string | null;
+  serial: number;
+  target: string | null;
+  target_unit: string | null;
+  target_value: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusGroupSupplier {
+  account: string | null;
+  city: string;
+  company_address: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  credit_day_count: number | null;
+  credit_quota: Numeric | null;
+  deleted_at: Timestamp | null;
+  fr_gender: string | null;
+  fr_mobile: string | null;
+  fr_name: string | null;
+  fr_sfz: string | null;
+  id: string;
+  kh_address: string | null;
+  kh_bank: string | null;
+  kh_mobile: string | null;
+  kh_name: string | null;
+  lxr: string | null;
+  lxr_gender: string | null;
+  mobile: string | null;
+  nsr_sbh: string | null;
+  platform_id: string | null;
+  province: string;
+  sfz: string | null;
+  sh_address: string | null;
+  supplier_name: string;
+  supplier_origin: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string;
+}
+
+export interface BusHealthArchive {
+  age: string | null;
+  archive_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept: string;
+  entry_date: Timestamp;
+  gender: string | null;
+  id: string;
+  name: string;
+  phone: string;
+  position: string;
+  sfz: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusHealthArchiveDetail {
+  archive_id: string;
+  check_date: Timestamp;
+  check_institution: string;
+  check_item: string;
+  check_result: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  next_inspect_time: string | null;
+  serial: number;
+  take_measure: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusIncomingQualityCheck {
+  chy: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dh_date: Timestamp;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  quality_check_order_no: string;
+  salesman: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusIncomingQualityCheckDetail {
+  batch_id: string;
+  bhg_count: Numeric | null;
+  check_count: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  hg_count: Numeric;
+  id: string;
+  make_date: Timestamp;
+  quality_check_order_no: string;
+  quality_check_result: string | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  validity: Timestamp;
+}
+
+export interface BusIncomingQualityCheckDetail1 {
+  bhg_count: string | null;
+  check_count: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_name: string;
+  hg_count: string;
+  id: string;
+  inv_date: string;
+  make_date: string;
+  makeno: string;
+  place_of_origin: string;
+  produce_enterprise: string;
+  quality_check_order_no: string;
+  quality_check_result: string | null;
+  select: string;
+  serial: string;
+  spec: string;
+  tenant_id: string;
+  unit: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusIncomingQualityCheckItem {
+  check_id: string | null;
+  check_item: string;
+  check_method: string | null;
+  check_result: string;
+  check_std_value: string | null;
+  check_type: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  quality_check_order_no: string;
+  remark: string | null;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusLtTechnologyRecord {
+  created_at: Timestamp;
+  created_by: string | null;
+  ddl: string | null;
+  deleted_at: Timestamp | null;
+  formula_code: string | null;
+  id: string;
+  make_date: Timestamp | null;
+  order_id: string | null;
+  ph_price: string | null;
+  product_name: string | null;
+  rhph: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusLtTechnologyRecordDetail {
+  action: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  formula_code: string | null;
+  id: string;
+  jb_speed: string | null;
+  jb_time: Timestamp | null;
+  jz_time: string | null;
+  operate_end_wd: string | null;
+  operate_time_end: Timestamp | null;
+  operate_time_on: Timestamp | null;
+  remark: string | null;
+  serial: string | null;
+  temperature: string | null;
+  tenant_id: string;
+  tr_ylx: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusLtTechnologyRecordQuality {
+  check_id: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  formula_code: string | null;
+  id: string;
+  remark: string | null;
+  self_test_item: string | null;
+  self_test_result: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusLyFileUpload {
+  annex_list: string;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  serial: number;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusLyManageDetail {
+  created_by: string | null;
+  created_time: Timestamp | null;
+  due_date: Timestamp;
+  duty_people: string | null;
+  expiry_date: Timestamp;
+  ly_capacity: Numeric;
+  ly_code: string;
+  ly_count: Numeric;
+  ly_date: Timestamp;
+  ly_people: string | null;
+  ly_weight: Numeric;
+  make_date: Timestamp;
+  remark: string | null;
+  sample_clfs: string | null;
+  sample_name: string;
+  sample_ruin_date: string | null;
+  sample_type: string;
+  serial: number;
+  storage_ask: string | null;
+  storage_position: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusMaintainingRecords {
+  created_at: Timestamp;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  follow_content: string | null;
+  follow_dept: string | null;
+  follow_method: string;
+  follow_person: string | null;
+  follow_time: Timestamp;
+  id: string;
+  next_follow_time: Timestamp | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialCate {
+  cate_group_id: string;
+  cate_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  material_id: string;
+  prior_level: number | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialCheckItem {
+  check_item_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  material_id: string;
+  status: Generated<number | null>;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialCheckItemRecord {
+  approver: string | null;
+  check_result: string | null;
+  check_std: string | null;
+  check_time: Timestamp | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string | null;
+  inspector: string | null;
+  material_id: string | null;
+  qty: Numeric | null;
+  remedial_measures: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string | null;
+}
+
+export interface BusMaterialCheckItemRecordDetail {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  detection_situation: string | null;
+  goods_id: string;
+  id: string | null;
+  serial: number;
+  single_testing_result: string | null;
+  standard_require: string | null;
+  tenant_id: string;
+  testing_items: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialLicense {
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  filelist: string | null;
+  goods_id: string;
+  id: string;
+  invalid_date: Timestamp | null;
+  is_control: Generated<number | null>;
+  license_no: string | null;
+  name: string | null;
+  start_date: Timestamp | null;
+  status: Generated<number | null>;
+  tenant_id: string;
+  type: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialList {
+  alias: string | null;
+  barcode: string | null;
+  brand: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  inic_code: string | null;
+  is_check_material: number | null;
+  is_key_material: number | null;
+  is_new_material: Generated<number | null>;
+  is_stock: Generated<number>;
+  last_purchase_price: Numeric | null;
+  material_commodity_id: string | null;
+  material_id: string;
+  min_price: Numeric | null;
+  min_purchase_price: Numeric | null;
+  min_stock: number | null;
+  name: string | null;
+  place_of_origin: string | null;
+  produce_factory: string | null;
+  produce_type: string | null;
+  pur_status: Generated<number | null>;
+  purchase_price: Numeric | null;
+  purpose_of_use: string | null;
+  remark: string | null;
+  report_id: string | null;
+  review_status: string | null;
+  sale_price: Numeric | null;
+  sale_status: Generated<number | null>;
+  source_id: string | null;
+  spec: string | null;
+  tenant_id: string;
+  unit: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  valid_day_count: number | null;
+  weight: Numeric | null;
+  zjm: string | null;
+}
+
+export interface BusMaterialProduceAddMaterial {
+  add_material_order_no: string;
+  bly_user: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  fly_user: string | null;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  recv_material_warehouse: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusMaterialProduceAddMaterialDetail {
+  add_material_order_no: string;
+  add_recved_qty: Numeric | null;
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dispatch_qty: Numeric | null;
+  goods_id: string | null;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  material_qty: Numeric;
+  order_qty: Numeric;
+  recved_qty: Numeric | null;
+  serial: number;
+  stallno: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialProduceRecvMaterial {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  fly: string | null;
+  id: string;
+  lly: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  recv_material_order_no: string;
+  recv_material_warehouse: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialProduceRecvMaterialDetail {
+  batch_no: string | null;
+  cargo_space: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string | null;
+  id: string;
+  idno: string | null;
+  inv_date: string | null;
+  ispatch_qty: string | null;
+  make_date: string | null;
+  makeno: string | null;
+  order_qty: Numeric;
+  recv_material_order_no: string;
+  recv_qty: Numeric;
+  recved_qty: Numeric | null;
+  serial: number;
+  tenant_id: string;
+  unrecved_material: Numeric | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialProduceReturnMaterial {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  return_material_order_no: string;
+  sly_user: string;
+  tenant_id: string;
+  tly_user: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusMaterialProduceReturnMaterialDetail {
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dispatch_qty: Numeric | null;
+  goods_id: string | null;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  order_qty: Numeric;
+  recved_qty: Numeric | null;
+  return_material_order_no: string;
+  return_qty: Numeric;
+  serial: number;
+  stallno: string;
+  tenant_id: string;
+  unrecved_qty: Numeric | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialRepel {
+  created_by: string | null;
+  created_time: Timestamp;
+  goods_id: string | null;
+  repel_id: string;
+  repel_name: string;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusMaterialRepelGroup {
+  created_by: string | null;
+  created_time: Timestamp | null;
+  repel_id: string;
+  repel_name: string | null;
+  repel_number: number | null;
+  repel_type: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusMaterialStockC {
+  available_qty: Numeric | null;
+  await_qty: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  stallno: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string | null;
+}
+
+export interface BusMaterialStockI {
+  batck_no: string | null;
+  buyer: string | null;
+  created_by: string;
+  created_time: Timestamp;
+  customer_id: string | null;
+  flag: string | null;
+  goods_id: string;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp | null;
+  is_customer: number | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  paytype: string | null;
+  purprice: Numeric | null;
+  purqty: Numeric | null;
+  purtax: Numeric | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string | null;
+}
+
+export interface BusMaterialStockM {
+  await_sumqty: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_sumqty: Numeric;
+  id: string;
+  lastm2qty: Numeric | null;
+  lastm3qty: Numeric | null;
+  lastmqty: Numeric | null;
+  maxday: Numeric | null;
+  maxqty: Numeric | null;
+  minday: Numeric | null;
+  minqty: Numeric | null;
+  storpurice: Numeric | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMaterialSupplierRelation {
+  comp_id: string;
+  goods_id: string;
+  goods_type: string;
+  id: string;
+  lock: Generated<string | null>;
+  purprice: Numeric | null;
+  tenant_id: string;
+  vondorno: string;
+}
+
+export interface BusMenu {
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  icon: string | null;
+  id: string;
+  is_enable: number;
+  link: string;
+  name: string;
+  parent_id: string | null;
+  sort_order: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusMessageLogRecord {
+  code: string;
+  created_at: Timestamp;
+  expires: Timestamp;
+  id: string;
+  ip_address: string;
+  phone: string;
+  tenant_id: string | null;
+  type: string;
+  updated_at: Timestamp | null;
+  use_channel: string;
+}
+
+export interface BusOkOut {
+  created_by: string | null;
+  created_time: Timestamp | null;
+  cust_add: string | null;
+  customer_id: string | null;
+  execdate: string | null;
+  goods_id: string | null;
+  goods_qty: string | null;
+  id: string | null;
+  out_date: string | null;
+  out_user: string | null;
+  requestno: string | null;
+  requet_user: string | null;
+  route: string | null;
+  shipper_user: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusOrderFileUpload {
+  annex: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  sale_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOrderFileUploadRet {
+  annex: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  ret_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOrderFormOutsource {
+  collect_invoice_plan: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dfdb: string;
+  id: string;
+  is_check: number;
+  origin_order_no: string;
+  origin_order_type: string;
+  outsource_date: Timestamp | null;
+  outsource_order_no: string;
+  payment_plan: string | null;
+  process_supplier: string;
+  sfdl: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  wfdb: string;
+}
+
+export interface BusOrderFormOutsourceB {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_stock: Numeric | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  loss_rate: Numeric | null;
+  outsource_order_no: string;
+  product_id: string | null;
+  product_ratio: Numeric | null;
+  receive_qty: Numeric;
+  required_qty: Numeric;
+  serial: number | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOrderFormOutsourceDetail {
+  contain_tax_money: Numeric | null;
+  contain_tax_univalent: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_outsource_count: Numeric | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  no_tax_price: Numeric | null;
+  no_tax_price_amount: Numeric | null;
+  order_count: Numeric;
+  outsource_order_no: string;
+  outsourcing_count: Numeric | null;
+  product_id: string | null;
+  serial: number;
+  tax_amount: Numeric | null;
+  tax_rate: Numeric | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  ysh_count: Numeric | null;
+}
+
+export interface BusOrderManage {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoiced: number | null;
+  last_updated_at: Timestamp | null;
+  last_updated_by: string | null;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  payment_method: string;
+  sale_order_no: string;
+  salesman: string;
+  settlement_method: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOrderManageDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  delivery_time: Timestamp;
+  goods_id: string;
+  id: string;
+  order_count: Numeric;
+  order_manage_id: string;
+  price: Numeric | null;
+  price_amount: Numeric | null;
+  serial: string | null;
+  stock: Numeric | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOrderManageDetailRet {
+  amt: Numeric | null;
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  idno: string | null;
+  inv_date: string | null;
+  make_date: string | null;
+  makeno: string | null;
+  order_qty: Numeric;
+  price: Numeric | null;
+  ret_order_no: string;
+  ret_qty: Numeric | null;
+  ret_qty_yt: Numeric | null;
+  serial: number | null;
+  stallno: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string | null;
+}
+
+export interface BusOrderManageRet {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  custno: string | null;
+  deleted_at: Timestamp | null;
+  dept_user: string;
+  id: string;
+  invoiced: number | null;
+  last_updated_at: Timestamp | null;
+  last_updated_by: string | null;
+  origin_no: string;
+  origin_type: string;
+  paytype: string;
+  returnno: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOutsourceQualityCheck {
+  chy: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dh_date: string | null;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  quality_check_order_no: string;
+  salesman: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string;
+}
+
+export interface BusOutsourceQualityCheckDetail {
+  bhg_count: Numeric | null;
+  check_count: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  hg_count: Numeric | null;
+  id: string;
+  inv_date: Timestamp;
+  make_date: Timestamp;
+  makeno: string;
+  quality_check_order_no: string;
+  quality_check_result: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOutsourceQualityCheckItem {
+  check_id: string;
+  check_item: string;
+  check_method: string;
+  check_result: string;
+  check_std_value: string;
+  check_type: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  quality_check_order_no: string;
+  remark: string | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOutsourceRework {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dfdb: string;
+  id: string;
+  origin_order_no: string;
+  origin_order_type: string;
+  outsource_rework_order_no: string;
+  process_supplier: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  wfdb: string;
+}
+
+export interface BusOutsourceReworkDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  delivery_date: Timestamp;
+  id: string;
+  makeno: string;
+  order_count: Numeric;
+  outsource_rework_order_no: string;
+  product_id: string;
+  rework_count: Numeric;
+  rework_reason: Numeric;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOutsourceRk {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dfdb: string;
+  id: string;
+  origin_order_no: string;
+  origin_order_type: string;
+  process_supplier: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  wfdb: string;
+  ww_rk_order_no: string;
+}
+
+export interface BusOutsourceRkDetail {
+  cargo_space: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_sh_count: Numeric;
+  deleted_at: Timestamp | null;
+  id: string;
+  order_count: Numeric;
+  product_id: string;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  wrk_qyt: Numeric | null;
+  ww_rk_order_no: string;
+  yrk_qyt: Numeric | null;
+}
+
+export interface BusOutsourceSh {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dfdb: string;
+  id: string;
+  origin_order_no: string;
+  origin_order_type: string;
+  process_supplier: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  wfdb: string;
+  ww_sh_order_no: string;
+}
+
+export interface BusOutsourceShDetail {
+  cargo_space: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_sh_count: Numeric;
+  deleted_at: Timestamp | null;
+  id: string;
+  order_count: Numeric;
+  outsourcing_count: Numeric | null;
+  product_id: string | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  ww_sh_order_no: string;
+  ysh_count: Numeric;
+}
+
+export interface BusOutsourceYs {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dfdb: string;
+  id: string;
+  origin_order_no: string;
+  origin_order_type: string;
+  process_supplier: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  wfdb: string;
+  ww_ys_order_no: string;
+}
+
+export interface BusOutsourceYsCheckItem {
+  check_id: string;
+  check_item: string;
+  check_method: string;
+  check_value: string;
+  conclusion: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  std_value: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusOutsourceYsDetail {
+  cargo_space: string;
+  check_count: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  order_count: Numeric;
+  product_id: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  ww_ys_order_no: string;
+  ys_count: Numeric;
+}
+
+export interface BusOutsourceYsUpload {
+  check_id: string;
+  check_type: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  img_upload: string | null;
+  is_upload: number;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  upload_item: string;
+}
+
+export interface BusPackage {
+  alias: string | null;
+  barcode: string | null;
+  brand: string | null;
+  business_scope: string | null;
+  buy_user: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  is_stock: Generated<number>;
+  material_type: string | null;
+  min_price: Numeric | null;
+  min_stock: Numeric | null;
+  name: string;
+  place_of_origin: string | null;
+  produce_factory: string | null;
+  pur_status: Generated<string | null>;
+  purprice: Numeric | null;
+  reg_id: string | null;
+  remark: string | null;
+  sale_status: Generated<string | null>;
+  saleprice: Numeric | null;
+  spec: string | null;
+  tenant_id: string;
+  unit: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  valid_day_count: number | null;
+  weight: Numeric | null;
+  zjm: string | null;
+}
+
+export interface BusPackageCate {
+  cate_group_id: string | null;
+  cate_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  package_id: string;
+  prior_level: number | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageCheckItem {
+  check_item_id: string;
+  created_at: Timestamp;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  package_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageDesign {
+  brand: string | null;
+  cost_total: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  dept_id: string;
+  design_order_no: string;
+  end_date: Timestamp | null;
+  id: string;
+  package_version: number;
+  product_name: string;
+  project_order_no: string;
+  salesman: string | null;
+  sjr: string;
+  spec: string;
+  start_date: Timestamp;
+  status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageDesignImg {
+  cost: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  design_order_no: string;
+  design_type: string | null;
+  filelist: string | null;
+  id: string;
+  project_order_no: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageDesignMaterial {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  design_order_no: string;
+  goods_id: string;
+  id: string;
+  price: Numeric;
+  produce_type: string;
+  project_order_no: string | null;
+  qty: Numeric;
+  serial: Generated<number>;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageDesignRequire {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string;
+  design_order_no: string;
+  develop_bus_project: string | null;
+  end_date: Timestamp;
+  fzr: string;
+  id: string;
+  progress_status: string;
+  project_order_no: string;
+  research_desc: string | null;
+  research_item: string | null;
+  serial: number;
+  start_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageLicense {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  filelist: string | null;
+  id: string;
+  invalid_date: Timestamp | null;
+  is_control: number | null;
+  license_no: string | null;
+  package_id: string;
+  start_date: Timestamp | null;
+  tenant_id: string;
+  type: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageProcessInspectionDetail {
+  bzpqr: string | null;
+  check_date: string | null;
+  clean_record: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  electronic_scale_check: string | null;
+  goods_id: string;
+  goods_name: string;
+  health: string | null;
+  id: string;
+  jcr: string | null;
+  labeling_information: string | null;
+  order_id: string | null;
+  packing_count: string | null;
+  pmph: string | null;
+  produce_number: string | null;
+  remark: string | null;
+  serial: string;
+  ssm: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  wbcl: string | null;
+}
+
+export interface BusPackageReport {
+  batch_qty: Numeric;
+  check_yj: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  detection_date: Timestamp;
+  goods_id: string;
+  goods_name: string;
+  id: string;
+  make_date: Timestamp;
+  makeno: string;
+  order_id: string;
+  remedial_measures: string | null;
+  sample_count: string;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageReportCheckItem {
+  bad_description_record: string | null;
+  bhg_count: string | null;
+  check_id: string;
+  check_item: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  judge_std: string | null;
+  single_testing_result: string | null;
+  tenant_id: string;
+  unqualified_treatment: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPackageStockC {
+  await_qty: string | null;
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  idno: string | null;
+  stallno: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse_no: string | null;
+}
+
+export interface BusPackageStockI {
+  batck_no: string | null;
+  buyer: string | null;
+  created_by: string;
+  created_time: Timestamp;
+  custno: string | null;
+  flag: string | null;
+  goods_id: string;
+  id: string;
+  idno: string | null;
+  inv_date: string | null;
+  is_customer: number | null;
+  make_date: string | null;
+  makeno: string | null;
+  payeetype: string | null;
+  purprice: string | null;
+  purqty: string | null;
+  purtax: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string | null;
+}
+
+export interface BusPackageStockM {
+  available_qty: Numeric | null;
+  await_sumqty: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_sumqty: Numeric;
+  id: string;
+  lastm2qty: string | null;
+  lastm3qty: string | null;
+  lastmqty: string | null;
+  maxday: string | null;
+  maxqty: string | null;
+  minday: string | null;
+  minqty: string | null;
+  storpurice: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPestTestManageDetail {
+  check_conclusion: string;
+  check_date: string;
+  control_measures: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  device: string;
+  device_status: string;
+  id: string;
+  inspection_area: string;
+  invoice_id: string;
+  jcr: string;
+  pest_situation: string;
+  select: string;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPriceGroup {
+  created_at: Timestamp;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  group_id: number;
+  group_name: string;
+  id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProcessOutsource {
+  collect_invoice_plan: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dfdb: string;
+  id: string;
+  is_check: number;
+  origin_order_no: string;
+  origin_order_type: string;
+  outsource_date: Timestamp;
+  outsource_order_no: string;
+  payment_plan: string | null;
+  process_supplier: string;
+  sfdl: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  wfdb: string;
+}
+
+export interface BusProcessOutsourceB {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_stock: Numeric | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  loss_rate: Numeric | null;
+  outsource_order_no: string;
+  product_id: string | null;
+  product_ratio: string | null;
+  receive_qty: Numeric;
+  required_qty: Numeric;
+  serial: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProcessOutsourceDetail {
+  contain_tax_money: Numeric | null;
+  contain_tax_univalent: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_outsource_count: Numeric | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  no_tax_price: Numeric | null;
+  no_tax_price_amount: Numeric | null;
+  order_count: Numeric;
+  outsource_order_no: string;
+  outsourcing_count: Numeric | null;
+  product_id: string | null;
+  serial: number;
+  tax_amount: Numeric | null;
+  tax_rate: Numeric | null;
+  technology_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  ysh_count: Numeric | null;
+}
+
+export interface BusProcessOutsourceY {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_stock: Numeric | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  loss_rate: Numeric | null;
+  outsource_order_no: string;
+  product_id: string | null;
+  product_ratio: string | null;
+  receive_qty: Numeric;
+  required_qty: Numeric;
+  serial: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceAddMaterial {
+  add_material_order_no: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Generated<Timestamp | null>;
+  fly_user: string | null;
+  id: string;
+  lly_user: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  tenant_id: string;
+  updated_at: Generated<Timestamp | null>;
+  updated_by: string | null;
+  warehouse: string;
+}
+
+export interface BusProduceAddMaterialDetail {
+  add_material_order_no: string;
+  batch_no: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Generated<Timestamp>;
+  dispatch_qty: Numeric | null;
+  goods_id: string | null;
+  id: string;
+  idno: string | null;
+  material_qty: Numeric;
+  order_qty: Numeric;
+  radd_ecved_qty: Numeric | null;
+  recved_qty: Numeric | null;
+  serial: number;
+  stallno: string;
+  tenant_id: string;
+  updated_at: Generated<Timestamp>;
+  updated_by: string | null;
+}
+
+export interface BusProduceClean {
+  clean_date: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  produce_order: string;
+  qcr: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceCleanDetail {
+  clean_standard: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  device_id: string;
+  device_name: string;
+  end_date: Timestamp;
+  id: string;
+  produce_order: string;
+  product_line: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  valid_deadline: Timestamp;
+  workshop: string;
+}
+
+export interface BusProduceCostDesign {
+  brand: string | null;
+  cost_order_no: string;
+  cost_total: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  produce_version: string | null;
+  product_name: string;
+  project_order_no: string;
+  salesman: string | null;
+  spec: string;
+  status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceCostDesignDetail {
+  cost_order_no: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string;
+  develop_bus_project: string | null;
+  fzr: string;
+  id: string;
+  plan_end_date: Timestamp;
+  progress_status: string;
+  project_order_no: string;
+  research_desc: string | null;
+  research_item: string | null;
+  start_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceDispatch {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dispatch_order_no: string;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  pgy: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceDispatchMaterial {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_stock: Numeric | null;
+  deleted_at: Timestamp | null;
+  dispatch_order_no: string;
+  goods_id: string | null;
+  id: string;
+  loss_rate: Numeric | null;
+  phase_sequence: string;
+  product_id: string;
+  product_ratio: Numeric | null;
+  receive_qty: Numeric;
+  required_qty: Numeric;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceDispatchPackage {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_stock: Numeric | null;
+  deleted_at: Timestamp | null;
+  dispatch_order_no: string;
+  goods_id: string | null;
+  id: string;
+  loss_rate: Numeric | null;
+  product_id: string;
+  product_ratio: string | null;
+  receive_qty: Numeric;
+  required_qty: Numeric;
+  serial: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceDispatchProduct {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_dispatch_qty: Numeric;
+  deleted_at: Timestamp | null;
+  delivery_date: Timestamp | null;
+  delivery_time_warning: string | null;
+  dispatch_order_no: string;
+  dispatching: Numeric | null;
+  goods_id: string;
+  id: string;
+  is_dispatching_person: string;
+  makeno: string | null;
+  material_list: string | null;
+  order_count: Numeric;
+  plan_end_date: Timestamp;
+  plan_start_date: Timestamp | null;
+  remark: string | null;
+  serial: number | null;
+  technology_process: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceDispatchTechnologyRoute {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  device: string;
+  dispatch_order_no: string;
+  id: string;
+  plan_end_work_time: Timestamp;
+  plan_start_work_time: Timestamp | null;
+  plan_working_sumtime: Numeric;
+  process_count: Numeric;
+  produce_order: number;
+  produce_person: string;
+  produce_process: string;
+  produce_type: string;
+  product_id: string | null;
+  product_line: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  work_time_unit: string;
+  workshop: string;
+}
+
+export interface BusProduceExecute {
+  clean_area: string;
+  clean_date: Timestamp;
+  clean_id: string;
+  conclusion: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  lean_opportunity: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  product_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusProduceExecuteDetail {
+  ask: string;
+  clean_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  operator: string;
+  operator_onclusion: string;
+  project: string;
+  rcr: string | null;
+  rcr_onclusion: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusProduceInform {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  inform_order_no: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  produce_process: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceInformDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_inform_count: Numeric;
+  deleted_at: Timestamp | null;
+  dispatch_count: Numeric;
+  id: string;
+  inform_order_no: string;
+  produce_device: string;
+  produce_person: string | null;
+  produce_process: string;
+  product_id: string;
+  product_line: string;
+  reported_quantity: Numeric;
+  serial: number;
+  tenant_id: string;
+  unreported_quantity: Numeric;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  workshop: string;
+}
+
+export interface BusProduceOrder {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  produce_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceOrderDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  delivery_date: Timestamp | null;
+  goods_id: string;
+  id: string;
+  material_list: string | null;
+  order_qty: Numeric;
+  plan_end_date: Timestamp;
+  plan_start_work_time: Timestamp | null;
+  produce_order_no: string;
+  produce_type: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProducePlan {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_status: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  plan_date: Timestamp;
+  plan_end_date: Timestamp;
+  plan_no: string;
+  plan_no_bc: string | null;
+  plan_no_yl: string | null;
+  plan_sta_date: Timestamp;
+  prod_qty: Numeric | null;
+  product_line_id: string;
+  production_cycle: number | null;
+  production_sort: number;
+  sale_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProducePlanBcAwait {
+  await_qty: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  out_qty: Numeric | null;
+  plan_no: string;
+  plan_qty: Numeric;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProducePlanDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  plan_no: string;
+  plan_qty: Numeric;
+  product_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProducePlanYlAwait {
+  await_qty: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  out_qty: Numeric | null;
+  plan_no: string;
+  plan_qty: Numeric;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProduceRecvMaterial {
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Generated<Timestamp>;
+  fly_user: string | null;
+  id: string;
+  lly_user: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  recv_material_order_no: string;
+  tenant_id: string;
+  updated_at: Generated<Timestamp>;
+  updated_by: string | null;
+  warehouse: string;
+}
+
+export interface BusProduceRecvMaterialDetail {
+  batch_no: string | null;
+  cargo_space: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Generated<Timestamp>;
+  goods_id: string | null;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp | null;
+  ispatch_qty: Numeric | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  order_qty: Numeric;
+  recv_material_order_no: string;
+  recv_qty: Numeric;
+  recved_qty: Numeric;
+  serial: number;
+  tenant_id: string;
+  updated_at: Generated<Timestamp>;
+  updated_by: string | null;
+}
+
+export interface BusProduceReturnMaterial {
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Generated<Timestamp>;
+  fly_user: string | null;
+  id: string;
+  lly_user: string;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  recv_material_warehouse: string;
+  return_material_order_no: string;
+  tenant_id: string;
+  updated_at: Generated<Timestamp>;
+  updated_by: string | null;
+}
+
+export interface BusProduceReturnMaterialDetail {
+  batch_no: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Generated<Timestamp | null>;
+  dispatch_qty: Numeric | null;
+  goods_id: string | null;
+  id: string;
+  idno: string | null;
+  order_qty: Numeric;
+  recved_qty: Numeric | null;
+  return_material_order_no: string;
+  return_qty: Numeric | null;
+  serial: number;
+  stallno: string;
+  tenant_id: string;
+  unrecved_qty: Numeric | null;
+  updated_at: Generated<Timestamp | null>;
+  updated_by: string | null;
+  warehouse: string | null;
+}
+
+export interface BusProduceWeigh {
+  created_by: string | null;
+  created_time: Timestamp | null;
+  fl_people: string | null;
+  origin_invoice_type: string;
+  origin_order_no: string;
+  people: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  warehouse: string | null;
+  weigh_code: string;
+}
+
+export interface BusProduceWeighDetail {
+  bcczsl: Numeric;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  order_count: Numeric;
+  product_id: string;
+  serial: number;
+  stall_no: string;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  warehouse: string | null;
+  wczsl: Numeric;
+  yczsl: Numeric;
+}
+
+export interface BusProduct {
+  alias: string | null;
+  barcode: string | null;
+  brand: string;
+  buy_user: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  max_qty: string | null;
+  mid_qty: string | null;
+  min_price: Numeric | null;
+  min_stock: Numeric | null;
+  name: string;
+  place_of_origin: string;
+  produce_factory: string;
+  produce_type: string | null;
+  purprice: Numeric | null;
+  remark: string | null;
+  saleprice: Numeric | null;
+  source_id: string | null;
+  spec: string;
+  tenant_id: string;
+  unit: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  valid_day_count: number;
+  weight: Numeric | null;
+  zjm: string;
+}
+
+export interface BusProductCate {
+  cate_group_id: string;
+  cate_id: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  prior_level: number | null;
+  product_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProductCheckItem {
+  check_item_id: string | null;
+  product_id: string | null;
+  status: Generated<number | null>;
+}
+
+export interface BusProductLicense {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  filelist: string | null;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_no: string | null;
+  product_id: string;
+  start_date: Timestamp | null;
+  tenant_id: string;
+  type: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProductPriceCustomer {
+  created_at: Timestamp;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  price: Numeric | null;
+  product_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProductPriceGroup {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_default: number | null;
+  price: Numeric | null;
+  price_group_id: string;
+  product_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProductRecallManage {
+  cope_programme: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  recall_order_no: string;
+  recall_reason: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusProductRecallManageDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  makeno: string;
+  order_qty: string | null;
+  product_id: string;
+  recall_order_no: string;
+  recall_qty: string;
+  sale_order_no: string | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProductReleaseAudit {
+  created_at: Timestamp | null;
+  created_by: string | null;
+  date: Timestamp | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  jcr: string | null;
+  order_id: string | null;
+  pmph: string | null;
+  qty: string | null;
+  spr: string | null;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProductReleaseCheckItem {
+  check: string | null;
+  created_at: Timestamp | null;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  dxshjg: string | null;
+  goods_id: string | null;
+  id: string;
+  serial: string | null;
+  sp_product: string | null;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProductShip {
+  created_at: Timestamp | null;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  fh_date: Timestamp;
+  fhr: string;
+  finance_person: string | null;
+  gdy: string;
+  goods_id: string;
+  hy_corporate_name: string;
+  id: string;
+  remark: string | null;
+  serial: string;
+  sh_address: string;
+  sh_lxr: string | null;
+  sh_phone: string | null;
+  sh_unit: string;
+  ship_qty: Numeric;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vehicle_hygiene: string;
+}
+
+export interface BusProjectChange {
+  barcode: string | null;
+  brand: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  isnewbrand: number;
+  item_status: string;
+  net_content: string | null;
+  plan_end_date: string;
+  plan_qty: number | null;
+  product_name: string;
+  project_leader: string;
+  project_order_no: string;
+  project_type: string;
+  project_u_order_no: string;
+  salesman: string;
+  spec: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProjectChangeDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string;
+  develop_bus_project: string;
+  fzr: string;
+  id: string;
+  plan_end_date: Timestamp;
+  project_order_no: string;
+  project_u_order_no: string;
+  research_desc: string;
+  research_item: string;
+  serial: number;
+  start_date: Timestamp;
+  status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  updated_type: number;
+}
+
+export interface BusProjectRequest {
+  barcode: string | null;
+  brand: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  isnewbrand: number | null;
+  item_status: string;
+  net_content: string | null;
+  plan_end_date: Timestamp;
+  plan_order_qty: number;
+  product_name: string;
+  project_leader: string | null;
+  project_order_no: string;
+  project_type: string;
+  salesman: string | null;
+  spec: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProjectRequestCate {
+  cate_group_id: string;
+  cate_group_name: string;
+  cate_id: string;
+  cate_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  project_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProjectRequestCateChange {
+  cate_group_id: string;
+  cate_group_name: string;
+  cate_id: string;
+  cate_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  project_order_no: string;
+  project_u_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProjectRequestDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string;
+  develop_bus_project: string | null;
+  fzr: string;
+  id: string;
+  plan_end_date: Timestamp;
+  progress_status: string;
+  project_order_no: string;
+  research_desc: string | null;
+  research_item: string | null;
+  serial: number;
+  start_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProjectRequestGroupD {
+  barcode: string | null;
+  brand: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  isnewbrand: number | null;
+  item_status: string;
+  net_content: string | null;
+  plan_end_date: string;
+  product_name: string;
+  project_order_no: string;
+  project_type: string;
+  spec: string;
+  sub_project_order_no: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusProjectRequestGroupM {
+  barcode: string | null;
+  brand: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  isnewbrand: number | null;
+  item_status: number;
+  net_content: string | null;
+  plan_end_date: Timestamp;
+  plan_order_qty: number;
+  product_name: string;
+  project_leader: string | null;
+  project_order_no: string;
+  project_type: string;
+  salesman: string;
+  spec: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPurchaseContract {
+  amount: Numeric;
+  chy: string;
+  code: string;
+  contract_end_date: Timestamp;
+  contract_signing_date: Timestamp;
+  contract_start_date: Timestamp;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  opposite_proxy: string;
+  own_proxy: string;
+  payment_method: string;
+  procurement_type: string;
+  salesman: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string;
+}
+
+export interface BusPurchaseContractDetail {
+  price: Numeric;
+  product_id: string;
+  purchase_contract_id: string;
+  qty: Numeric;
+  remark: string | null;
+  tax_amount: Numeric | null;
+  tax_out_price: Numeric | null;
+  tax_rate: Numeric;
+}
+
+export interface BusPurchaseContractUpload {
+  contract_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  filelist: string | null;
+  id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPurchaseOrder {
+  buyer: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  execdate: Timestamp | null;
+  id: string;
+  invoiced: number | null;
+  is_invoice: number | null;
+  order_id: string;
+  order_origin: string | null;
+  paln_type: string | null;
+  paytype: string | null;
+  plan_no: string | null;
+  salesman: string;
+  sign: number | null;
+  status: Generated<string | null>;
+  supplier: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  useless_days: number | null;
+  yjdh_date: Timestamp | null;
+}
+
+export interface BusPurchaseOrderDetail {
+  accept_qty: Numeric | null;
+  amount: Numeric | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  order_id: string;
+  purprice: Numeric;
+  rk_order_no: string | null;
+  serial: number | null;
+  sign: number | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPurchasePlan {
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  plan_number: string;
+  purchase_type: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPurchasePlanDetail {
+  chy: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  last_buy_price: Numeric | null;
+  payment_method: string;
+  purchase_plan_id: string;
+  purchase_price: Numeric | null;
+  purchase_unit: Numeric | null;
+  qty: Numeric;
+  sale_order_no: string | null;
+  salesman: string;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  used_unit: string | null;
+}
+
+export interface BusPurchaseReturn {
+  buyer: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept: string;
+  id: string;
+  paytype: string;
+  plantype: string | null;
+  return_order_no: string;
+  tenant_id: string;
+  updated_at: string | null;
+  updated_by: string | null;
+  vendorno: string;
+  warehouse: string | null;
+}
+
+export interface BusPurchaseReturnDetail {
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  price: Numeric | null;
+  purtax: Numeric | null;
+  return_order_no: string;
+  stallno: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+  wareqty: Numeric | null;
+}
+
+export interface BusPurchaseRk {
+  buyer: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  execdate: Timestamp | null;
+  id: string;
+  paln_type: string | null;
+  payment_method: string;
+  paytype: string | null;
+  rk_order_no: string;
+  salesman: string;
+  status: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string;
+  warehouse: string | null;
+  ys_order_no: string;
+}
+
+export interface BusPurchaseRkDetail {
+  accept_qty: Numeric;
+  amount: Numeric | null;
+  batch_no: string | null;
+  check_qty: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  order_id: string | null;
+  order_qty: Numeric;
+  purprice: Numeric | null;
+  purtax: Numeric | null;
+  rk_order_no: string;
+  stallno: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse_id: string;
+  ys_qty: Numeric;
+}
+
+export interface BusPurchaseSh {
+  chy: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  order_id: string | null;
+  payment_method: string;
+  salesman: string;
+  sh_order_no: string;
+  status: Generated<string | null>;
+  supplier: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string | null;
+}
+
+export interface BusPurchaseShDetail {
+  check_qty: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  inv_data: Timestamp | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  order_id: string | null;
+  order_qty: Numeric | null;
+  price: Numeric | null;
+  price_amount: Numeric | null;
+  select: string | null;
+  serial: string | null;
+  sh_order_no: string;
+  tenant_id: string;
+  unrecved_count: Numeric;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusPurchaseYs {
+  cgy: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  order_no: string | null;
+  payment_method: string | null;
+  plan_type: string;
+  salesman: string | null;
+  supplier: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string | null;
+  ys_order_no: string;
+}
+
+export interface BusPurchaseYsCheckItem {
+  check_id: string;
+  check_item: string;
+  check_method: string;
+  check_type: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  platform_id: string | null;
+  std_value: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  ys_order_no: string;
+}
+
+export interface BusPurchaseYsDetail {
+  amount: Numeric;
+  check_qty: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  inv_date: Timestamp | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  order_no: string | null;
+  purprice: Numeric;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  upload: string | null;
+  ys_conclusion: string | null;
+  ys_order_no: string;
+}
+
+export interface BusPurchaseYsUpload {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  img_upload: string | null;
+  is_upload: number | null;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  upload_item: string | null;
+  ys_order_no: string;
+}
+
+export interface BusQualCheckItem {
+  code: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  method: string;
+  option: string;
+  remark: string | null;
+  std_val: string | null;
+  tenant_id: string;
+  type: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusQualityCheckDetail {
+  bhg_count: string | null;
+  check_count: string | null;
+  check_method: string | null;
+  check_rate: string | null;
+  check_result: string | null;
+  check_typ: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deal_method: string | null;
+  deleted_at: Timestamp | null;
+  due_date: Timestamp | null;
+  goods_id: string | null;
+  hg_count: string | null;
+  id: string;
+  inv_date: Timestamp | null;
+  make_date: Timestamp | null;
+  makeno: string | null;
+  quality_check_order_no: string;
+  remark: string | null;
+  select: number;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusQualityCheckItemSetting {
+  check_id: string;
+  check_item: string | null;
+  check_method: string | null;
+  check_std_value: string | null;
+  check_type: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  remark: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusQualityComplaintManage {
+  complaint_cate: string;
+  complaint_content: string;
+  complaint_date: Timestamp;
+  complaint_method: string;
+  complaint_order_no: string;
+  complaint_person: string;
+  cope_programme: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  custom_comment: string | null;
+  custom_satisfaction: string | null;
+  customer_id: string;
+  deal_date: Timestamp | null;
+  deal_method: string | null;
+  deal_result: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  lxr: string;
+  product_id: string;
+  slr: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusQualityFileDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  document_cate: string;
+  document_name: string;
+  document_size: string | null;
+  document_status: string;
+  document_summary: string | null;
+  document_version: string | null;
+  id: string;
+  operate: string | null;
+  scr: string;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  upload_date: Timestamp | null;
+}
+
+export interface BusQuantity {
+  id: string;
+  in_qty: Numeric | null;
+  material_id: string;
+  order_id: string;
+  processing_time: Timestamp | null;
+  purchase_order_id: string | null;
+  qh_date: Timestamp;
+  qh_qty: Numeric;
+  status: string | null;
+  tenant_id: string;
+  yjdh_date: Timestamp | null;
+}
+
+export interface BusQuotedPriceManage {
+  contract_order_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string | null;
+  deleted_at: Timestamp | null;
+  formula_version: number;
+  id: string;
+  origin_invoice_type: string | null;
+  origin_order_no: string | null;
+  package_version: number;
+  payment_method: string;
+  produce_version: number;
+  product_name: string | null;
+  quoted_price_order_no: string;
+  sale_order_no: string | null;
+  salesman: string;
+  spec: string | null;
+  tax_price: Numeric;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+}
+
+export interface BusQuotedPriceManageDetail {
+  contain_tax_price: Numeric;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  no_tax_price: Numeric;
+  no_tax_price_amount: Numeric;
+  qty: Numeric;
+  quoted_price_manage_id: string;
+  quoted_price_type: string;
+  serial: string;
+  tax_price: Numeric;
+  tax_rate: Numeric;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusRecombinationMaterialDetail {
+  composition_ratio: Numeric;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  src_goods_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusReleaseOne {
+  check_time: string | null;
+  created_at: Timestamp | null;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  goods_id: string | null;
+  goods_type: string | null;
+  id: string;
+  product_status: string | null;
+  release_date: Timestamp | null;
+  release_person: string | null;
+  remark: string | null;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusRestingRecord {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string | null;
+  id: string;
+  make_no: string | null;
+  qctc_date: Timestamp | null;
+  qty: string | null;
+  recipe_code: string | null;
+  remark: string | null;
+  resting_start_date: Timestamp | null;
+  seria: string | null;
+  tcr: string | null;
+  tenant_id: string;
+  tfr: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zldh: string | null;
+}
+
+export interface BusSampleCustomerFeedback {
+  adjustment_opinions: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  feedback_time: Timestamp | null;
+  filelist: string | null;
+  id: string;
+  passed: number;
+  sample_deliervry_no: string;
+  serial: Generated<number>;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusSampleDeliveryD {
+  created_by: string | null;
+  created_time: Timestamp | null;
+  id: string;
+  place_of_origin: string | null;
+  produce_factory: string | null;
+  product_name: string;
+  sample_deliervry_no: string;
+  sample_note: string | null;
+  sample_qty: number | null;
+  serial: string;
+  spec: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusSampleDeliveryM {
+  confirmed_time: Timestamp;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  customer_id: string;
+  id: string;
+  product_name: string;
+  project_order_no: string;
+  salesman: string | null;
+  sample_deliervry_no: string;
+  sample_time: Timestamp;
+  sample_user: string;
+  send_type: string;
+  source_order_no: string;
+  source_type: string;
+  status: Generated<string>;
+  tenant_id: string;
+  tracking_no: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  version_no: number;
+}
+
+export interface BusSetApproveNodeSetting {
+  audit_node: string;
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_id: string;
+  invoice_name: string;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusSetApproveNodeTrigger {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_id: string;
+  invoice_name: string;
+  serial: number;
+  tenant_id: string;
+  trigger_process: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusSetCateItemSetting1 {
+  belong_cate: string | null;
+  cate_group_id: string;
+  cate_group_name: string | null;
+  cate_id: string;
+  cate_name: string | null;
+  cate_summary: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusSetInvoiceIdRuleSetting {
+  code_rule: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  curr_serial: number | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_id: string;
+  invoice_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusSetProductLineDesign {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  disable_at: Timestamp | null;
+  enable_at: Timestamp;
+  id: string;
+  is_enable: number;
+  product_line_id: string;
+  product_line_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  workshop_id: string;
+  workshop_name: string;
+}
+
+export interface BusSetShipLogisticSetting {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  logistic_name: string;
+  settlement_method: string;
+  ship_id: string;
+  ship_method: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusSetShipMethodSetting {
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  ship_id: string;
+  ship_method: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusSetWarehouse {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  disable_at: Timestamp | null;
+  enable_at: Timestamp;
+  fzr: string;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse_id: string;
+  warehouse_name: string;
+}
+
+export interface BusSetWarehouseStall {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  disable_at: Timestamp | null;
+  enable_at: Timestamp;
+  fzr: string | null;
+  id: string;
+  is_enable: number;
+  serial: number;
+  stallname: string;
+  stallno: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse_id: string;
+}
+
+export interface BusSetWorkshopSetting {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  disable_at: Timestamp | null;
+  enable_at: Timestamp;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  workshop_id: string;
+  workshop_name: string;
+}
+
+export interface BusSglTestJgdjDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  date: Timestamp;
+  deleted_at: Timestamp | null;
+  disinfect_way: string;
+  goods_id: string;
+  id: string;
+  khqrsgl: string;
+  mark_spec: string;
+  remark: string | null;
+  salesman: string;
+  serial: string;
+  tenant_id: string;
+  test_gl: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusShipRequest {
+  bus_order_manage: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  customer_id: string;
+  deleted_at: Timestamp | null;
+  delivery_date: Timestamp | null;
+  id: string;
+  origin_invoice_type: string;
+  out_user: string | null;
+  real_order_no: string | null;
+  requestno: string;
+  salesman: string;
+  ship_address: string;
+  ship_date: Timestamp;
+  ship_method: string;
+  ship_route: string;
+  status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string | null;
+}
+
+export interface BusShipRequestDetail {
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp;
+  make_date: Timestamp;
+  makeno: string;
+  ouqty: Numeric;
+  pack_method: string;
+  requestno: string | null;
+  saleprice: Numeric | null;
+  serial: number | null;
+  stallno: string | null;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusStockInventory {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  inventory_order_no: string;
+  invoice_status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse: string;
+}
+
+export interface BusStockInventoryDetail {
+  batch_no: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  cy_qty: Numeric | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: Numeric;
+  idno: string;
+  inv_date: string | null;
+  inventory_date: Timestamp;
+  inventory_no: string;
+  make_date: string | null;
+  makeno: string | null;
+  pdr: string;
+  purprice: Numeric | null;
+  serial: number;
+  sp_qty: Numeric;
+  stallno: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zc_qty: Numeric | null;
+}
+
+export interface BusStockLossProfit {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  loss_profit_order_no: string;
+  status: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse_no: string;
+}
+
+export interface BusStockLossProfitDetail {
+  abn_qty: Numeric;
+  await_qty: Numeric;
+  batch_no: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  goods_qty: Numeric;
+  id: string;
+  idno: string;
+  loss_profit_order_no: string;
+  loss_profit_type: string;
+  serial: number;
+  stallno: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  warehouse_no: string;
+}
+
+export interface BusStockTransfer {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_status: string | null;
+  orgwarehouse: string;
+  stowarehouse: string;
+  tenant_id: string;
+  transfer_order_no: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface BusStockTransferDetail {
+  batch_buy_price: Numeric;
+  batch_no: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  idno: string | null;
+  inv_date: Timestamp;
+  makeno: string;
+  orgirstallno: string | null;
+  serial: number;
+  stostallno: string | null;
+  tenant_id: string;
+  transfer_count: Numeric;
+  transfer_order_no: string;
+  transfer_price_amount: Numeric;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusSupplier {
+  address: string;
+  bank: string | null;
+  bankno: string | null;
+  city: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  credit_day_count: number | null;
+  credit_quota: Numeric | null;
+  deleted_at: Timestamp | null;
+  fr_gender: Generated<number>;
+  fr_mobile: string;
+  fr_name: string;
+  fr_sfz: string;
+  id: string;
+  kh_address: string | null;
+  kh_mobile: string | null;
+  kh_name: string | null;
+  lxr: string | null;
+  lxr_gender: Generated<number>;
+  mobile: string;
+  name: string;
+  nsr_sbh: string | null;
+  origin: string;
+  payeetype: string | null;
+  province: string;
+  sfz: string;
+  sh_address: string;
+  source_id: string | null;
+  status: Generated<number>;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusSupplierBusinessCate {
+  code: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_business: number;
+  name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vendorno: string;
+}
+
+export interface BusSupplierCateSetting {
+  cate_group_id: string;
+  cate_id: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusSupplierLicense {
+  code: string;
+  created_at: Timestamp;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  filelist: string | null;
+  id: string;
+  invalid_date: Timestamp | null;
+  is_control: Generated<number | null>;
+  license_no: string;
+  name: string;
+  start_date: Timestamp | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusSupplierOutsource {
+  account: string | null;
+  city: string;
+  company_address: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  credit_day_count: number | null;
+  credit_quota: number | null;
+  deleted_at: Timestamp | null;
+  fr_gender: string | null;
+  fr_mobile: string | null;
+  fr_name: string | null;
+  fr_sfz: string | null;
+  id: string;
+  kh_address: string | null;
+  kh_bank: string | null;
+  kh_mobile: string | null;
+  kh_name: string | null;
+  lxr: string | null;
+  lxr_gender: string | null;
+  mobile: string | null;
+  nsr_sbh: string | null;
+  platform_id: string | null;
+  province: string;
+  sfz: string | null;
+  sh_address: string | null;
+  supplier_name: string;
+  supplier_origin: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusSupplierOutsourceBusinessCate {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_business: number | null;
+  platform_id: string | null;
+  range_id: string;
+  range_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusSupplierOutsourceCateSetting {
+  cate_group_id: string;
+  cate_id: string;
+  cate_name: string;
+  class_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusSupplierOutsourceLicense {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  file_upload: string | null;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_id: string;
+  license_name: string;
+  license_no: string | null;
+  platform_id: string | null;
+  start_date: Timestamp | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface BusSupplierUser {
+  created_by: string | null;
+  created_time: Timestamp | null;
+  id: string;
+  id_card: string | null;
+  supplier_user: string;
+  supplier_username: string;
+  tel: string;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vondorno: string;
+}
+
+export interface BusSystemSetting {
+  code: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  param_desc: string | null;
+  param_name: string;
+  setting_value: string;
+  source_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusTechnologyRoute {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  technology_route_id: string;
+  technology_route_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusTechnologyRouteDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  process_count: number;
+  process_order: number;
+  process_work_time: Numeric;
+  produce_type: string;
+  technology_id: string;
+  technology_route_id: string;
+  tenant_id: string;
+  unit: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusTechnologySetting {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  technology_id: string;
+  technology_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusTrain {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  invoice_id: string;
+  tenant_id: string;
+  train_courseware: string | null;
+  train_date: Timestamp;
+  train_method: string;
+  train_place: string;
+  train_target: string;
+  train_teacher: string;
+  train_theme: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusTrainPerson {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept: string;
+  id: string;
+  invoice_id: string;
+  name: string;
+  phone: string | null;
+  position: string;
+  serial: number;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusTrainScore {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept: string;
+  education: string | null;
+  entry_date: string | null;
+  gender: string | null;
+  id: string;
+  invoice_id: string;
+  name: string;
+  phone: string | null;
+  position: string | null;
+  rank: string | null;
+  score: string | null;
+  serial: number;
+  tenant_id: string;
+  train_theme: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface BusUserTransfer {
+  billno: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  dept_id_obj: string | null;
+  dept_id_src: string | null;
+  id: string;
+  phone: string;
+  position_id_obj: string | null;
+  position_id_src: string | null;
+  tenant_id: string | null;
+  transfer_date: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusUVendorAccount {
+  batch_no: string | null;
+  billcode: string;
+  billno: string;
+  buyer: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  dept: string | null;
+  direct: string;
+  disamt: string | null;
+  execdate: string | null;
+  goods_id: string;
+  goods_qty: Numeric | null;
+  goods_type: string | null;
+  id: string;
+  idno: string | null;
+  invoice: Numeric | null;
+  invoice_status: string | null;
+  notes: string | null;
+  payedqty: Numeric | null;
+  paytype: string | null;
+  purprice: string | null;
+  purtax: string | null;
+  realpayqty: Numeric | null;
+  saleprice: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string;
+}
+
+export interface BusVendorAccount {
+  batch_no: string | null;
+  billcode: string;
+  billno: string;
+  buyer: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  dept: string | null;
+  direct: string;
+  disamt: string | null;
+  execdate: string | null;
+  goods_id: string;
+  goods_qty: Numeric | null;
+  goods_type: string | null;
+  id: string;
+  idno: string | null;
+  invoice: Numeric | null;
+  invoice_status: string | null;
+  notes: string | null;
+  payedqty: Numeric | null;
+  paytype: string | null;
+  purprice: string | null;
+  purtax: string | null;
+  realpayqty: Numeric | null;
+  saleprice: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string;
+}
+
+export interface BusVendorPayapplyC {
+  allstoreqty: string | null;
+  batch_no: string | null;
+  billcode: string | null;
+  billno: string | null;
+  buyer: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  goods_id: string | null;
+  id: string | null;
+  idno: string | null;
+  invoice: Numeric | null;
+  invoiced: Numeric | null;
+  invoiceno: string | null;
+  notes: string | null;
+  payedqty: Numeric | null;
+  payqty: Numeric | null;
+  purprice: Numeric | null;
+  purqty: Numeric | null;
+  purtax: string | null;
+  rowid: string | null;
+  stallmo: string | null;
+  storeqty: Numeric | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface BusVendorPayapplyM {
+  accamt: string | null;
+  applyno: string | null;
+  bak1: string | null;
+  bak2: string | null;
+  bak3: string | null;
+  billcode: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  deptno: string | null;
+  execdate: string | null;
+  goods_type: string | null;
+  id: string;
+  status: string | null;
+  storeamt: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string;
+}
+
+export interface BusVendorPrepayC {
+  bank: string | null;
+  bankno: string | null;
+  billcode: string | null;
+  buyer: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  dept: string | null;
+  execdate: Timestamp | null;
+  goods_id: string | null;
+  goods_qty: Numeric | null;
+  id: string;
+  invoice: Numeric | null;
+  orderno: string | null;
+  payed_no: string | null;
+  payedqty: string | null;
+  paytype: string | null;
+  prepayno: string | null;
+  purprice: Numeric | null;
+  purtax: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string | null;
+}
+
+export interface BusVendorPrepayM {
+  bank: string | null;
+  billcode: string | null;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  id: string;
+  prepayno_m: string | null;
+  status: string | null;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  vendorno: string | null;
+}
+
+export interface BusWbsjInspect {
+  check_chance: string | null;
+  check_yj: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  gmjh: string | null;
+  id: string;
+  order_count: string | null;
+  order_id: string;
+  pmjh: string | null;
+  product_id: string;
+  qyy: string | null;
+  rhph: string | null;
+  scxb: string;
+  tenant_id: string;
+  testing_result: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  xyy: string | null;
+  ybs: string | null;
+}
+
+export interface BusWbsjInspectDetail {
+  check_item: string;
+  check_std_value: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  qyy_decide: string;
+  remark: string | null;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  xyy_decide: string;
+}
+
+export interface CheckRuleDetail {
+  average: string | null;
+  category: string;
+  check_rate: string;
+  check_type: string;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  crowd: string;
+  net_content: string | null;
+  reference_basis: string | null;
+  remark: string | null;
+  serial: string;
+  serious: string | null;
+  slight: string | null;
+  standard: string;
+  storage_conditions: string;
+  tenant_id: string;
+  testing_content: string;
+  testing_items: string;
+  testing_result: string;
+  type: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface DevelopTemplateSetting {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  template_id: string;
+  template_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface DevelopTemplateSettingDetail {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string;
+  develop_bus_project: string | null;
+  develop_project: string;
+  enabled: number;
+  fzr: string;
+  id: string;
+  remark: string | null;
+  template_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface DeviceList {
+  applicants: string;
+  check_result: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  czl: Numeric;
+  deleted_at: Timestamp | null;
+  device_id: string;
+  device_name: string;
+  device_remark: string | null;
+  device_status: string;
+  device_type: string;
+  id: string;
+  jddqr: Timestamp;
+  jdrq: Timestamp;
+  jdzq_y: string;
+  producer: string;
+  purchase_p: string;
+  serial: number;
+  spec_type: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zbdqr: Timestamp;
+  zjnx: Numeric;
+  zr_dept: string;
+}
+
+export interface FailedJobs {
+  connection: string;
+  exception: string;
+  failed_at: Generated<Timestamp>;
+  id: Generated<Int8>;
+  payload: string;
+  queue: string;
+  uuid: string;
+}
+
+export interface LtTechnologyRecordQuality {
+  check_id: string | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  formula_code: string | null;
+  remark: string | null;
+  self_test_item: string | null;
+  self_test_result: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface LyFileUpload {
+  annex_list: string;
+  created_by: string | null;
+  created_time: Timestamp | null;
+  serial: string;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface LyManageDetail {
+  created_by: string | null;
+  created_time: Timestamp | null;
+  due_date: string;
+  duty_people: string | null;
+  expiry_date: string;
+  ly_capacity: string;
+  ly_code: string;
+  ly_count: string;
+  ly_date: string;
+  ly_people: string | null;
+  ly_weight: string;
+  make_date: string;
+  remark: string | null;
+  sample_clfs: string | null;
+  sample_name: string;
+  sample_ruin_date: string | null;
+  sample_type: string;
+  serial: string;
+  storage_ask: string | null;
+  storage_position: string | null;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface MaterialCheckItemRecord {
+  approver: string | null;
+  check_result: string | null;
+  check_std: string | null;
+  check_time: Timestamp | null;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string | null;
+  inspector: string | null;
+  material_id: string | null;
+  qty: string | null;
+  remedial_measures: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string | null;
+}
+
+export interface MaterialCheckItemRecordDetail {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  detection_situation: string | null;
+  goods_id: string;
+  id: string | null;
+  serial: string;
+  single_testing_result: string | null;
+  standard_require: string | null;
+  tenant_id: string;
+  testing_items: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface PasswordResetTokens {
+  created_at: Timestamp | null;
+  email: string;
+  token: string;
+}
+
+export interface PersonalAccessTokens {
+  abilities: string | null;
+  created_at: Timestamp | null;
+  expires_at: Timestamp | null;
+  id: Generated<Int8>;
+  last_used_at: Timestamp | null;
+  name: string;
+  token: string;
+  tokenable_id: Int8;
+  tokenable_type: string;
+  updated_at: Timestamp | null;
+}
+
+export interface PFinishedProductCheckItem {
+  check_id: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  goods_id: string;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface PInic {
+  cn_lang_name: string;
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  en_lang_name: string | null;
+  id: string;
+  inic_id: string;
+  lx_max: string | null;
+  remark: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zl_max: string | null;
+}
+
+export interface PPlatformSupplier {
+  account: string | null;
+  city: string;
+  company_address: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  credit_day_count: number | null;
+  credit_quota: Numeric | null;
+  deleted_at: Timestamp | null;
+  fr_gender: string | null;
+  fr_mobile: string | null;
+  fr_name: string | null;
+  fr_sfz: string | null;
+  id: string;
+  kh_address: string | null;
+  kh_bank: string | null;
+  kh_mobile: string | null;
+  kh_name: string | null;
+  lxr: string | null;
+  lxr_gender: string | null;
+  mobile: string | null;
+  nsr_sbh: string | null;
+  platform_id: string | null;
+  province: string;
+  sfz: string | null;
+  sh_address: string | null;
+  supplier_name: string;
+  supplier_origin: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface PPlatformSupplierBusinessCate {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_business: number | null;
+  platform_id: string | null;
+  range_id: string;
+  range_name: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface PPlatformSupplierCateSetting {
+  cate_group_id: string;
+  cate_group_name: string | null;
+  cate_id: string;
+  cate_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface PPlatformSupplierLicense {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  file_upload: string | null;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_id: string;
+  license_name: string;
+  license_no: string;
+  platform_id: string | null;
+  start_date: Timestamp;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface ProduceCleanTemplate {
+  clean_area: string | null;
+  clean_opportunity: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string | null;
+  template_id: string | null;
+  template_name: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string | null;
+  zdr: string | null;
+}
+
+export interface ProduceCleanTemplateDetail {
+  ask: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string | null;
+  project: string;
+  serial: string;
+  template_id: string;
+  template_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zd_at: string;
+  zdr: string;
+}
+
+export interface PSetCompanyGroupSetting1 {
+  company_group_address: string | null;
+  company_group_name: string;
+  company_group_service_at: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  group: string;
+  id: string;
+  lxr: string | null;
+  mobile: string | null;
+  sfz: string | null;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface PSupplierOutsource {
+  account: string | null;
+  city: string;
+  company_address: string;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  credit_day_count: number | null;
+  credit_quota: Numeric | null;
+  deleted_at: Timestamp | null;
+  fr_gender: string | null;
+  fr_mobile: string | null;
+  fr_name: string | null;
+  fr_sfz: string | null;
+  id: string;
+  kh_address: string | null;
+  kh_bank: string | null;
+  kh_mobile: string | null;
+  kh_name: string | null;
+  lxr: string | null;
+  lxr_gender: string | null;
+  mobile: string | null;
+  nsr_sbh: string | null;
+  platform_id: string | null;
+  province: string;
+  sfz: string | null;
+  sh_address: string | null;
+  supplier_name: string;
+  supplier_origin: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface PSupplierOutsourceBusinessCate {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_business: number | null;
+  platform_id: string | null;
+  range_id: string;
+  range_name: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface PSupplierOutsourceCateSetting {
+  cate_group_id: string;
+  cate_id: string;
+  cate_name: string | null;
+  class_name: string | null;
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  platform_id: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface PSupplierOutsourceLicense {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  file_upload: string | null;
+  id: string;
+  invalid_date: Timestamp;
+  is_control: number;
+  license_id: string;
+  license_name: string | null;
+  license_no: string | null;
+  platform_id: string | null;
+  start_date: Timestamp | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  vondorno: string;
+}
+
+export interface SysCateGroup {
+  belong_cate: string;
+  code: string;
+  control_type: string;
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  name: string;
+  note: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysCateItem {
+  cate_group_id: string;
+  cate_name: string;
+  cate_summary: string | null;
+  code: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysDept {
+  code: string;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_note: string | null;
+  id: string;
+  manager: string | null;
+  name: string | null;
+  parent_id: string | null;
+  status: number | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zjm: string | null;
+}
+
+export interface SysDevDict {
+  code: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  name: string | null;
+  status: Generated<number | null>;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysDevDictDetail {
+  code: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dict_id: string | null;
+  id: string;
+  name: string | null;
+  parent_id: string | null;
+  sort: number | null;
+  status: Generated<number | null>;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysInformation {
+  created_by: string | null;
+  created_time: Timestamp;
+  extend_field: string | null;
+  From: string;
+  invoice_id: string;
+  invoice_text: string | null;
+  invoice_theme: string | null;
+  invoice_type: string;
+  is_read: string;
+  link: string | null;
+  message: string;
+  recipient: string;
+  remark: string | null;
+  review_status: string | null;
+  revision: number;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface SysPosition {
+  code: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string | null;
+  id: string;
+  name: string | null;
+  post_note: string | null;
+  status: number | null;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysRegion {
+  category: number | null;
+  code: string;
+  level: number | null;
+  name: string | null;
+  pcode: string | null;
+}
+
+export interface SysRole {
+  code: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  name: string | null;
+  status: Generated<number | null>;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysRoleDetail {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  function_id: string;
+  function_name: string;
+  id: string;
+  is_enable: number;
+  is_export: number | null;
+  role_id: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysSetGroupSetting {
+  created_at: Generated<Timestamp>;
+  created_by: string;
+  deleted_at: Timestamp | null;
+  group_code: string;
+  id: string;
+  param_id: string;
+  param_name: string;
+  param_notes: string | null;
+  setting_value: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysSetting {
+  code: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  desc: string | null;
+  id: string | null;
+  name: string | null;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  value: string | null;
+}
+
+export interface SysTenant {
+  code: string | null;
+  created_at: Timestamp | null;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  name: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zjm: string | null;
+}
+
+export interface SysTitleSetting {
+  created_at: Timestamp;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  status: number;
+  tenant_id: string;
+  title_id: string | null;
+  title_name: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  zjm: string;
+}
+
+export interface SysUser {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  dept_id: string | null;
+  entry_date: Timestamp | null;
+  gender: string;
+  id: string;
+  name: string;
+  origin: string | null;
+  password: string;
+  phone: string;
+  position_id: string | null;
+  socialite_id: string | null;
+  status: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface SysUserCompany {
+  created_by: string | null;
+  created_time: Timestamp;
+  id: string;
+  is_enable: number;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  user_id: string;
+}
+
+export interface SysUserRole {
+  created_at: Generated<Timestamp>;
+  created_by: string | null;
+  deleted_at: Timestamp | null;
+  id: string;
+  is_enable: number;
+  role_id: string | null;
+  tenant_id: string | null;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+  user_id: string | null;
+}
+
+export interface SysUserRoleT {
+  role_id: string | null;
+  user_id: string | null;
+}
+
+export interface SysUserTenant {
+  created_by: string | null;
+  created_time: Timestamp;
+  id: string;
+  is_enable: number;
+  tenant_id: string | null;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+  user_id: string | null;
+}
+
+export interface SysWorkflow {
+  approver: string;
+  created_by: string | null;
+  created_time: Timestamp;
+  examine_status: string;
+  examine_time: string;
+  invoice_id: string;
+  invoice_type: string;
+  message: string;
+  process_node: string;
+  tenant_id: string;
+  updated_by: string | null;
+  updated_time: Timestamp | null;
+}
+
+export interface TelescopeEntries {
+  batch_id: string;
+  content: string;
+  created_at: Timestamp | null;
+  family_hash: string | null;
+  sequence: Generated<Int8>;
+  should_display_on_index: Generated<boolean>;
+  type: string;
+  uuid: string;
+}
+
+export interface TelescopeEntriesTags {
+  entry_uuid: string;
+  tag: string;
+}
+
+export interface TelescopeMonitoring {
+  tag: string;
+}
+
+export interface Traces {
+  connection_id: number;
+  db: string;
+  db_user: string;
+  disabled: boolean;
+  dom_from: Generated<number>;
+  dom_to: Generated<number>;
+  dow_from: Generated<number>;
+  dow_to: Generated<number>;
+  from: Timestamp;
+  id: Generated<number>;
+  keyword: string;
+  mail_to: string | null;
+  name: string;
+  owner_id: number;
+  period: number;
+  query_id: string;
+  rows_limit_million: Generated<Numeric | null>;
+  to: Timestamp;
+}
+
+export interface ZSetCDddw {
+  created_at: string | null;
+  created_by: string;
+  dddw_group_name: string;
+  dddw_group_no: string;
+  deleted_at: Timestamp;
+  id: string;
+  sort: string | null;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface ZSetCDddwDetail {
+  created_at: string;
+  created_by: string | null;
+  dddw_group_name: string;
+  dddw_group_no: string;
+  dddw_name: string;
+  dddw_no: string;
+  deleted_at: Timestamp | null;
+  id: string;
+  pick: string;
+  serial: string;
+  tenant_id: string;
+  updated_at: Timestamp | null;
+  updated_by: string | null;
+}
+
+export interface Database {
+  bhg_destruction_detail: BhgDestructionDetail;
+  bhg_review_disposal: BhgReviewDisposal;
+  bus_bad_feedback_manage: BusBadFeedbackManage;
+  bus_ban_catalog: BusBanCatalog;
+  bus_bcp_report_check_item: BusBcpReportCheckItem;
+  bus_bcpys_detection: BusBcpysDetection;
+  bus_bcpys_detection_project: BusBcpysDetectionProject;
+  bus_bcpys_report: BusBcpysReport;
+  bus_bhg_confirm: BusBhgConfirm;
+  bus_bhg_confirm_detail: BusBhgConfirmDetail;
+  bus_bhg_destroy: BusBhgDestroy;
+  bus_bhg_destroy_detail: BusBhgDestroyDetail;
+  bus_bhg_destruction_detail: BusBhgDestructionDetail;
+  bus_bhg_review_disposal: BusBhgReviewDisposal;
+  bus_bom_master: BusBomMaster;
+  bus_bom_material: BusBomMaterial;
+  bus_bom_package: BusBomPackage;
+  bus_bom_technology: BusBomTechnology;
+  bus_check_rule_detail: BusCheckRuleDetail;
+  bus_company: BusCompany;
+  bus_company_detail: BusCompanyDetail;
+  bus_company_group: BusCompanyGroup;
+  bus_company_group_customer_cate_setting_1: BusCompanyGroupCustomerCateSetting1;
+  bus_company_group_detail: BusCompanyGroupDetail;
+  bus_company_group_material_check_item: BusCompanyGroupMaterialCheckItem;
+  bus_company_group_material_license: BusCompanyGroupMaterialLicense;
+  bus_company_group_product_allow: BusCompanyGroupProductAllow;
+  bus_company_group_supplier_business_cate: BusCompanyGroupSupplierBusinessCate;
+  bus_company_group_supplier_cate_setting: BusCompanyGroupSupplierCateSetting;
+  bus_company_group_supplier_license: BusCompanyGroupSupplierLicense;
+  bus_company_material_set: BusCompanyMaterialSet;
+  bus_company_package_cate: BusCompanyPackageCate;
+  bus_company_package_check_item: BusCompanyPackageCheckItem;
+  bus_company_package_license: BusCompanyPackageLicense;
+  bus_company_package_list: BusCompanyPackageList;
+  bus_company_package_set: BusCompanyPackageSet;
+  bus_company_supplier_outsource_set: BusCompanySupplierOutsourceSet;
+  bus_company_supplier_set: BusCompanySupplierSet;
+  bus_contract_manage: BusContractManage;
+  bus_contract_manage_detail: BusContractManageDetail;
+  bus_cp_report_check_item: BusCpReportCheckItem;
+  bus_cpys_detection: BusCpysDetection;
+  bus_cpys_detection_project: BusCpysDetectionProject;
+  bus_cpys_report: BusCpysReport;
+  bus_custom_account: BusCustomAccount;
+  bus_custom_payapply_c: BusCustomPayapplyC;
+  bus_custom_payapply_m: BusCustomPayapplyM;
+  bus_custom_prepay_c: BusCustomPrepayC;
+  bus_custom_prepay_m: BusCustomPrepayM;
+  bus_customer: BusCustomer;
+  bus_customer_business_cate: BusCustomerBusinessCate;
+  bus_customer_cate: BusCustomerCate;
+  bus_customer_company_group_allow: BusCustomerCompanyGroupAllow;
+  bus_customer_license: BusCustomerLicense;
+  bus_customer_supply_quality_check: BusCustomerSupplyQualityCheck;
+  bus_customer_supply_quality_check_detail: BusCustomerSupplyQualityCheckDetail;
+  bus_customer_supply_quality_check_item: BusCustomerSupplyQualityCheckItem;
+  bus_customer_supply_rk: BusCustomerSupplyRk;
+  bus_customer_supply_rk_detail: BusCustomerSupplyRkDetail;
+  bus_customer_supply_sh: BusCustomerSupplySh;
+  bus_customer_supply_sh_detail: BusCustomerSupplyShDetail;
+  bus_customer_supply_stock: BusCustomerSupplyStock;
+  bus_customer_supply_stock_detail: BusCustomerSupplyStockDetail;
+  bus_customer_supply_stock_search: BusCustomerSupplyStockSearch;
+  bus_customer_supply_stock_search_detail: BusCustomerSupplyStockSearchDetail;
+  bus_customer_supply_ys: BusCustomerSupplyYs;
+  bus_customer_supply_ys_detail: BusCustomerSupplyYsDetail;
+  bus_delivery_truck_check_item: BusDeliveryTruckCheckItem;
+  bus_delivery_truck_inspect: BusDeliveryTruckInspect;
+  bus_dispatch_quality_check: BusDispatchQualityCheck;
+  bus_dispatch_quality_check_detail: BusDispatchQualityCheckDetail;
+  bus_dispatch_quality_check_item: BusDispatchQualityCheckItem;
+  bus_env_test_manage: BusEnvTestManage;
+  bus_env_test_manage_detail: BusEnvTestManageDetail;
+  bus_filing_m: BusFilingM;
+  bus_filling_process_inspection_detail: BusFillingProcessInspectionDetail;
+  bus_filling_sj_inspect: BusFillingSjInspect;
+  bus_filling_sj_inspect_detail: BusFillingSjInspectDetail;
+  bus_finaccept_c: BusFinacceptC;
+  bus_finaccept_m: BusFinacceptM;
+  bus_finished_product_cate: BusFinishedProductCate;
+  bus_finished_product_check_item: BusFinishedProductCheckItem;
+  bus_finished_product_license: BusFinishedProductLicense;
+  bus_finished_product_stock_c: BusFinishedProductStockC;
+  bus_finished_product_stock_i: BusFinishedProductStockI;
+  bus_finished_product_stock_m: BusFinishedProductStockM;
+  bus_formula_design: BusFormulaDesign;
+  bus_formula_design_cate: BusFormulaDesignCate;
+  bus_formula_design_material: BusFormulaDesignMaterial;
+  bus_formula_design_require: BusFormulaDesignRequire;
+  bus_formula_design_technology: BusFormulaDesignTechnology;
+  bus_group_supplier: BusGroupSupplier;
+  bus_health_archive: BusHealthArchive;
+  bus_health_archive_detail: BusHealthArchiveDetail;
+  bus_incoming_quality_check: BusIncomingQualityCheck;
+  bus_incoming_quality_check_detail: BusIncomingQualityCheckDetail;
+  bus_incoming_quality_check_detail1: BusIncomingQualityCheckDetail1;
+  bus_incoming_quality_check_item: BusIncomingQualityCheckItem;
+  bus_lt_technology_record: BusLtTechnologyRecord;
+  bus_lt_technology_record_detail: BusLtTechnologyRecordDetail;
+  bus_lt_technology_record_quality: BusLtTechnologyRecordQuality;
+  bus_ly_file_upload: BusLyFileUpload;
+  bus_ly_manage_detail: BusLyManageDetail;
+  bus_maintaining_records: BusMaintainingRecords;
+  bus_material_cate: BusMaterialCate;
+  bus_material_check_item: BusMaterialCheckItem;
+  bus_material_check_item_record: BusMaterialCheckItemRecord;
+  bus_material_check_item_record_detail: BusMaterialCheckItemRecordDetail;
+  bus_material_license: BusMaterialLicense;
+  bus_material_list: BusMaterialList;
+  bus_material_produce_add_material: BusMaterialProduceAddMaterial;
+  bus_material_produce_add_material_detail: BusMaterialProduceAddMaterialDetail;
+  bus_material_produce_recv_material: BusMaterialProduceRecvMaterial;
+  bus_material_produce_recv_material_detail: BusMaterialProduceRecvMaterialDetail;
+  bus_material_produce_return_material: BusMaterialProduceReturnMaterial;
+  bus_material_produce_return_material_detail: BusMaterialProduceReturnMaterialDetail;
+  bus_material_repel: BusMaterialRepel;
+  bus_material_repel_group: BusMaterialRepelGroup;
+  bus_material_stock_c: BusMaterialStockC;
+  bus_material_stock_i: BusMaterialStockI;
+  bus_material_stock_m: BusMaterialStockM;
+  bus_material_supplier_relation: BusMaterialSupplierRelation;
+  bus_menu: BusMenu;
+  bus_message_log_record: BusMessageLogRecord;
+  bus_ok_out: BusOkOut;
+  bus_order_file_upload: BusOrderFileUpload;
+  bus_order_file_upload_ret: BusOrderFileUploadRet;
+  bus_order_form_outsource: BusOrderFormOutsource;
+  bus_order_form_outsource_b: BusOrderFormOutsourceB;
+  bus_order_form_outsource_detail: BusOrderFormOutsourceDetail;
+  bus_order_manage: BusOrderManage;
+  bus_order_manage_detail: BusOrderManageDetail;
+  bus_order_manage_detail_ret: BusOrderManageDetailRet;
+  bus_order_manage_ret: BusOrderManageRet;
+  bus_outsource_quality_check: BusOutsourceQualityCheck;
+  bus_outsource_quality_check_detail: BusOutsourceQualityCheckDetail;
+  bus_outsource_quality_check_item: BusOutsourceQualityCheckItem;
+  bus_outsource_rework: BusOutsourceRework;
+  bus_outsource_rework_detail: BusOutsourceReworkDetail;
+  bus_outsource_rk: BusOutsourceRk;
+  bus_outsource_rk_detail: BusOutsourceRkDetail;
+  bus_outsource_sh: BusOutsourceSh;
+  bus_outsource_sh_detail: BusOutsourceShDetail;
+  bus_outsource_ys: BusOutsourceYs;
+  bus_outsource_ys_check_item: BusOutsourceYsCheckItem;
+  bus_outsource_ys_detail: BusOutsourceYsDetail;
+  bus_outsource_ys_upload: BusOutsourceYsUpload;
+  bus_package: BusPackage;
+  bus_package_cate: BusPackageCate;
+  bus_package_check_item: BusPackageCheckItem;
+  bus_package_design: BusPackageDesign;
+  bus_package_design_img: BusPackageDesignImg;
+  bus_package_design_material: BusPackageDesignMaterial;
+  bus_package_design_require: BusPackageDesignRequire;
+  bus_package_license: BusPackageLicense;
+  bus_package_process_inspection_detail: BusPackageProcessInspectionDetail;
+  bus_package_report: BusPackageReport;
+  bus_package_report_check_item: BusPackageReportCheckItem;
+  bus_package_stock_c: BusPackageStockC;
+  bus_package_stock_i: BusPackageStockI;
+  bus_package_stock_m: BusPackageStockM;
+  bus_pest_test_manage_detail: BusPestTestManageDetail;
+  bus_price_group: BusPriceGroup;
+  bus_process_outsource: BusProcessOutsource;
+  bus_process_outsource_b: BusProcessOutsourceB;
+  bus_process_outsource_detail: BusProcessOutsourceDetail;
+  bus_process_outsource_y: BusProcessOutsourceY;
+  bus_produce_add_material: BusProduceAddMaterial;
+  bus_produce_add_material_detail: BusProduceAddMaterialDetail;
+  bus_produce_clean: BusProduceClean;
+  bus_produce_clean_detail: BusProduceCleanDetail;
+  bus_produce_cost_design: BusProduceCostDesign;
+  bus_produce_cost_design_detail: BusProduceCostDesignDetail;
+  bus_produce_dispatch: BusProduceDispatch;
+  bus_produce_dispatch_material: BusProduceDispatchMaterial;
+  bus_produce_dispatch_package: BusProduceDispatchPackage;
+  bus_produce_dispatch_product: BusProduceDispatchProduct;
+  bus_produce_dispatch_technology_route: BusProduceDispatchTechnologyRoute;
+  bus_produce_execute: BusProduceExecute;
+  bus_produce_execute_detail: BusProduceExecuteDetail;
+  bus_produce_inform: BusProduceInform;
+  bus_produce_inform_detail: BusProduceInformDetail;
+  bus_produce_order: BusProduceOrder;
+  bus_produce_order_detail: BusProduceOrderDetail;
+  bus_produce_plan: BusProducePlan;
+  bus_produce_plan_bc_await: BusProducePlanBcAwait;
+  bus_produce_plan_detail: BusProducePlanDetail;
+  bus_produce_plan_yl_await: BusProducePlanYlAwait;
+  bus_produce_recv_material: BusProduceRecvMaterial;
+  bus_produce_recv_material_detail: BusProduceRecvMaterialDetail;
+  bus_produce_return_material: BusProduceReturnMaterial;
+  bus_produce_return_material_detail: BusProduceReturnMaterialDetail;
+  bus_produce_weigh: BusProduceWeigh;
+  bus_produce_weigh_detail: BusProduceWeighDetail;
+  bus_product: BusProduct;
+  bus_product_cate: BusProductCate;
+  bus_product_check_item: BusProductCheckItem;
+  bus_product_license: BusProductLicense;
+  bus_product_price_customer: BusProductPriceCustomer;
+  bus_product_price_group: BusProductPriceGroup;
+  bus_product_recall_manage: BusProductRecallManage;
+  bus_product_recall_manage_detail: BusProductRecallManageDetail;
+  bus_product_release_audit: BusProductReleaseAudit;
+  bus_product_release_check_item: BusProductReleaseCheckItem;
+  bus_product_ship: BusProductShip;
+  bus_project_change: BusProjectChange;
+  bus_project_change_detail: BusProjectChangeDetail;
+  bus_project_request: BusProjectRequest;
+  bus_project_request_cate: BusProjectRequestCate;
+  bus_project_request_cate_change: BusProjectRequestCateChange;
+  bus_project_request_detail: BusProjectRequestDetail;
+  bus_project_request_group_d: BusProjectRequestGroupD;
+  bus_project_request_group_m: BusProjectRequestGroupM;
+  bus_purchase_contract: BusPurchaseContract;
+  bus_purchase_contract_detail: BusPurchaseContractDetail;
+  bus_purchase_contract_upload: BusPurchaseContractUpload;
+  bus_purchase_order: BusPurchaseOrder;
+  bus_purchase_order_detail: BusPurchaseOrderDetail;
+  bus_purchase_plan: BusPurchasePlan;
+  bus_purchase_plan_detail: BusPurchasePlanDetail;
+  bus_purchase_return: BusPurchaseReturn;
+  bus_purchase_return_detail: BusPurchaseReturnDetail;
+  bus_purchase_rk: BusPurchaseRk;
+  bus_purchase_rk_detail: BusPurchaseRkDetail;
+  bus_purchase_sh: BusPurchaseSh;
+  bus_purchase_sh_detail: BusPurchaseShDetail;
+  bus_purchase_ys: BusPurchaseYs;
+  bus_purchase_ys_check_item: BusPurchaseYsCheckItem;
+  bus_purchase_ys_detail: BusPurchaseYsDetail;
+  bus_purchase_ys_upload: BusPurchaseYsUpload;
+  bus_qual_check_item: BusQualCheckItem;
+  bus_quality_check_detail: BusQualityCheckDetail;
+  bus_quality_check_item_setting: BusQualityCheckItemSetting;
+  bus_quality_complaint_manage: BusQualityComplaintManage;
+  bus_quality_file_detail: BusQualityFileDetail;
+  bus_quantity: BusQuantity;
+  bus_quoted_price_manage: BusQuotedPriceManage;
+  bus_quoted_price_manage_detail: BusQuotedPriceManageDetail;
+  bus_recombination_material_detail: BusRecombinationMaterialDetail;
+  bus_release_one: BusReleaseOne;
+  bus_resting_record: BusRestingRecord;
+  bus_sample_customer_feedback: BusSampleCustomerFeedback;
+  bus_sample_delivery_d: BusSampleDeliveryD;
+  bus_sample_delivery_m: BusSampleDeliveryM;
+  bus_set_approve_node_setting: BusSetApproveNodeSetting;
+  bus_set_approve_node_trigger: BusSetApproveNodeTrigger;
+  bus_set_cate_item_setting_1: BusSetCateItemSetting1;
+  bus_set_invoice_id_rule_setting: BusSetInvoiceIdRuleSetting;
+  bus_set_product_line_design: BusSetProductLineDesign;
+  bus_set_ship_logistic_setting: BusSetShipLogisticSetting;
+  bus_set_ship_method_setting: BusSetShipMethodSetting;
+  bus_set_warehouse: BusSetWarehouse;
+  bus_set_warehouse_stall: BusSetWarehouseStall;
+  bus_set_workshop_setting: BusSetWorkshopSetting;
+  bus_sgl_test_jgdj_detail: BusSglTestJgdjDetail;
+  bus_ship_request: BusShipRequest;
+  bus_ship_request_detail: BusShipRequestDetail;
+  bus_stock_inventory: BusStockInventory;
+  bus_stock_inventory_detail: BusStockInventoryDetail;
+  bus_stock_loss_profit: BusStockLossProfit;
+  bus_stock_loss_profit_detail: BusStockLossProfitDetail;
+  bus_stock_transfer: BusStockTransfer;
+  bus_stock_transfer_detail: BusStockTransferDetail;
+  bus_supplier: BusSupplier;
+  bus_supplier_business_cate: BusSupplierBusinessCate;
+  bus_supplier_cate_setting: BusSupplierCateSetting;
+  bus_supplier_license: BusSupplierLicense;
+  bus_supplier_outsource: BusSupplierOutsource;
+  bus_supplier_outsource_business_cate: BusSupplierOutsourceBusinessCate;
+  bus_supplier_outsource_cate_setting: BusSupplierOutsourceCateSetting;
+  bus_supplier_outsource_license: BusSupplierOutsourceLicense;
+  bus_supplier_user: BusSupplierUser;
+  bus_system_setting: BusSystemSetting;
+  bus_technology_route: BusTechnologyRoute;
+  bus_technology_route_detail: BusTechnologyRouteDetail;
+  bus_technology_setting: BusTechnologySetting;
+  bus_train: BusTrain;
+  bus_train_person: BusTrainPerson;
+  bus_train_score: BusTrainScore;
+  bus_u_vendor_account: BusUVendorAccount;
+  bus_user_transfer: BusUserTransfer;
+  bus_vendor_account: BusVendorAccount;
+  bus_vendor_payapply_c: BusVendorPayapplyC;
+  bus_vendor_payapply_m: BusVendorPayapplyM;
+  bus_vendor_prepay_c: BusVendorPrepayC;
+  bus_vendor_prepay_m: BusVendorPrepayM;
+  bus_wbsj_inspect: BusWbsjInspect;
+  bus_wbsj_inspect_detail: BusWbsjInspectDetail;
+  check_rule_detail: CheckRuleDetail;
+  develop_template_setting: DevelopTemplateSetting;
+  develop_template_setting_detail: DevelopTemplateSettingDetail;
+  device_list: DeviceList;
+  failed_jobs: FailedJobs;
+  lt_technology_record_quality: LtTechnologyRecordQuality;
+  ly_file_upload: LyFileUpload;
+  ly_manage_detail: LyManageDetail;
+  material_check_item_record: MaterialCheckItemRecord;
+  material_check_item_record_detail: MaterialCheckItemRecordDetail;
+  p_finished_product_check_item: PFinishedProductCheckItem;
+  p_inic: PInic;
+  p_platform_supplier: PPlatformSupplier;
+  p_platform_supplier_business_cate: PPlatformSupplierBusinessCate;
+  p_platform_supplier_cate_setting: PPlatformSupplierCateSetting;
+  p_platform_supplier_license: PPlatformSupplierLicense;
+  p_set_company_group_setting1: PSetCompanyGroupSetting1;
+  p_supplier_outsource: PSupplierOutsource;
+  p_supplier_outsource_business_cate: PSupplierOutsourceBusinessCate;
+  p_supplier_outsource_cate_setting: PSupplierOutsourceCateSetting;
+  p_supplier_outsource_license: PSupplierOutsourceLicense;
+  password_reset_tokens: PasswordResetTokens;
+  personal_access_tokens: PersonalAccessTokens;
+  produce_clean_template: ProduceCleanTemplate;
+  produce_clean_template_detail: ProduceCleanTemplateDetail;
+  sys_cate_group: SysCateGroup;
+  sys_cate_item: SysCateItem;
+  sys_dept: SysDept;
+  sys_dev_dict: SysDevDict;
+  sys_dev_dict_detail: SysDevDictDetail;
+  sys_information: SysInformation;
+  sys_position: SysPosition;
+  sys_region: SysRegion;
+  sys_role: SysRole;
+  sys_role_detail: SysRoleDetail;
+  sys_set_group_setting: SysSetGroupSetting;
+  sys_setting: SysSetting;
+  sys_tenant: SysTenant;
+  sys_title_setting: SysTitleSetting;
+  sys_user: SysUser;
+  sys_user_company: SysUserCompany;
+  sys_user_role: SysUserRole;
+  sys_user_role_t: SysUserRoleT;
+  sys_user_tenant: SysUserTenant;
+  sys_workflow: SysWorkflow;
+  telescope_entries: TelescopeEntries;
+  telescope_entries_tags: TelescopeEntriesTags;
+  telescope_monitoring: TelescopeMonitoring;
+  traces: Traces;
+  z_set_c_dddw: ZSetCDddw;
+  z_set_c_dddw_detail: ZSetCDddwDetail;
+}
+
+// prettier-ignore
+/**
+ * [playground]
+ *
+ * A \`Kysely\` instance with \`Database\` type from \`type-editor\`.
+ */
+declare const db: import("https://cdn.jsdelivr.net/npm/kysely/dist/esm/index.js").Kysely<Database>;
+// prettier-ignore
+/**
+ * [playground]
+ *
+ * An interceptor from kysely-playground.
+ */
+let $playground: {
+  /**
+   * [playground]
+   *
+   * Set the result of \`execute()\`.
+   *
+   * default:
+   *  \`{ rows: [{}] }\`
+   */
+  result: import("https://cdn.jsdelivr.net/npm/kysely/dist/esm/index.js").QueryResult<any>;
+
+  /**
+   * [playground]
+   *
+   *  Log messages to result panel.
+   */
+  log: (...args: any[]) => any;
+} = {} as any

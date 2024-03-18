@@ -1,16 +1,16 @@
 import { Code, ConnectError, PromiseClient } from '@connectrpc/connect';
 import { CancellationToken } from './CancellationToken';
 import {
+  CompletionItem,
   Document as DocumentInfo,
   GetCompletionsResponse,
-  CompletionItem,
   MultilineConfig,
 } from '../../api/proto/exa/language_server_pb/language_server_pb';
 import { Document } from './Document';
 import { Position, Range } from './Location';
 import {
-  numUtf8BytesToNumCodeUnits,
   numCodeUnitsToNumUtf8Bytes,
+  numUtf8BytesToNumCodeUnits,
 } from '../../utils/utf';
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { LanguageServerService } from '../../api/proto/exa/language_server_pb/language_server_connect';
@@ -18,10 +18,10 @@ import {
   Language,
   Metadata,
 } from '../../api/proto/exa/codeium_common_pb/codeium_common_pb';
-import { Status } from './Status';
 import { uuid } from '../../utils/uuid';
 import { getCurrentURL, getPackageVersion } from '../../utils/identity';
 import { languageIdToEnum } from '../../utils/language';
+import { Status } from './CodeiumEditor';
 
 class MonacoInlineCompletion implements monaco.languages.InlineCompletion {
   readonly insertText: string;
@@ -46,12 +46,10 @@ class MonacoInlineCompletion implements monaco.languages.InlineCompletion {
   }
 }
 const EDITOR_API_KEY = 'd49954eb-cfba-4992-980f-d8fb37f0e942';
-/**
- * CompletionProvider class for Codeium.
- */
+
 export class MonacoCompletionProvider {
   private client: PromiseClient<typeof LanguageServerService>;
-  private sessionId: string;
+  private readonly sessionId: string;
 
   /**
    * A list of other documents to include as context in the prompt.
@@ -60,8 +58,7 @@ export class MonacoCompletionProvider {
 
   constructor(
     grpcClient: PromiseClient<typeof LanguageServerService>,
-    readonly setStatus: (status: Status) => void,
-    readonly setMessage: (message: string) => void,
+    readonly setStatus?: (status: Status) => void,
     readonly apiKey?: string | undefined,
     readonly multilineModelThreshold?: number | undefined,
   ) {
@@ -71,14 +68,13 @@ export class MonacoCompletionProvider {
 
   private getAuthHeader() {
     const metadata = this.getMetadata();
-    const headers = {
+    return {
       Authorization: `Basic ${metadata.apiKey}-${metadata.sessionId}`,
     };
-    return headers;
   }
 
   private getMetadata(): Metadata {
-    const metadata = new Metadata({
+    return new Metadata({
       ideName: 'web',
       ideVersion: getCurrentURL() ?? 'unknown',
       extensionName: '@codeium/react-code-editor',
@@ -86,13 +82,13 @@ export class MonacoCompletionProvider {
       apiKey: this.apiKey ?? EDITOR_API_KEY,
       sessionId: this.sessionId,
     });
-    return metadata;
   }
 
   /**
    * Generate CompletionAndRanges.
    *
    * @param model - Monaco model.
+   * @param monacoPosition
    * @param token - Cancellation token.
    * @returns InlineCompletions or undefined
    */
@@ -117,8 +113,9 @@ export class MonacoCompletionProvider {
     });
     const signal = abortController.signal;
 
-    this.setStatus(Status.PROCESSING);
-    this.setMessage('Generating completions...');
+    if (this?.setStatus) {
+      this.setStatus(Status.PROCESSING);
+    }
 
     const documentInfo = this.getDocumentInfo(document, position);
     const editorOptions = {
@@ -161,17 +158,15 @@ export class MonacoCompletionProvider {
       // Handle cancellation.
       if (err instanceof ConnectError && err.code === Code.Canceled) {
         // cancelled
-      } else {
-        this.setStatus(Status.ERROR);
-        this.setMessage('Something went wrong; please try again.');
+      } else if (this.setStatus) {
+        this?.setStatus!(Status.ERROR);
       }
       return undefined;
     }
     if (!getCompletionsResponse.completionItems) {
-      // TODO(nick): Distinguish warning / error states here.
-      const message = ' No completions were generated';
-      this.setStatus(Status.SUCCESS);
-      this.setMessage(message);
+      if (this.setStatus) {
+        this?.setStatus!(Status.SUCCESS);
+      }
       return undefined;
     }
     const completionItems = getCompletionsResponse.completionItems;
@@ -183,12 +178,9 @@ export class MonacoCompletionProvider {
       )
       .filter((item) => !!item);
 
-    this.setStatus(Status.SUCCESS);
-    let message = `Generated ${inlineCompletionItems.length} completions`;
-    if (inlineCompletionItems.length === 1) {
-      message = `Generated 1 completion`;
+    if (this.setStatus) {
+      this?.setStatus!(Status.SUCCESS);
     }
-    this.setMessage(message);
 
     return {
       items: inlineCompletionItems as monaco.languages.InlineCompletion[],
@@ -196,12 +188,12 @@ export class MonacoCompletionProvider {
   }
 
   /**
-   * Record that the last completion shown was accepted by the user.
-   * @param ctx - Codeium context
+   * 记录最后显示的完成已被用户接受。
    * @param completionId - unique ID of the last completion.
    */
   public acceptedLastCompletion(completionId: string) {
-    new Promise((resolve, reject) => {
+    // noinspection JSIgnoredPromiseFromCall
+    new Promise((resolve) => {
       this.client
         .acceptCompletion(
           {
@@ -240,15 +232,13 @@ export class MonacoCompletionProvider {
       console.warn(`Unknown language: ${document.languageId}`);
     }
 
-    const documentInfo = new DocumentInfo({
+    return new DocumentInfo({
       text: text,
       editorLanguage: document.languageId,
       language,
       cursorOffset: BigInt(offset),
       lineEnding: '\n',
     });
-
-    return documentInfo;
   }
 
   /**
@@ -279,11 +269,10 @@ export class MonacoCompletionProvider {
     );
     const range = new Range(startPosition, endPosition);
 
-    const inlineCompletionItem = new MonacoInlineCompletion(
+    return new MonacoInlineCompletion(
       completionItem.completion.text,
       range,
       completionItem.completion.completionId,
     );
-    return inlineCompletionItem;
   }
 }

@@ -1,8 +1,11 @@
+// noinspection JSUnusedGlobalSymbols
+
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 
 import { CodeiumEditor } from '../components';
+import { makeQueryEditorHeader } from '../libs/kyely';
 import { Document, Language } from '../models';
+import React from 'react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof CodeiumEditor> = {
@@ -19,6 +22,7 @@ const meta: Meta<typeof CodeiumEditor> = {
 } satisfies Meta<typeof CodeiumEditor>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 const baseParams = {
@@ -26,221 +30,47 @@ const baseParams = {
   height: '500px',
 };
 
-const PYTHON_SNIPPET = `# Need inspiration? Try adding extra constraints or context to this parse json function!
-# Or scratch everything and use your imagination.
-
-def parse_json_lines(filename: str) -> List[Any]:
-    output = []
-    with open(filename, "r", encoding="utf-8") as f:
-`;
-
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const PythonEditor: Story = {
+export const TypescriptContext: Story = {
   args: {
     ...baseParams,
-    language: 'python',
-    value: PYTHON_SNIPPET,
+    packages: [
+      'https://deno.land/x/hono@v4.1.0/mod.ts',
+      'https://deno.land/x/doa@v1.0.0/mod.ts',
+      'https://cdn.jsdelivr.net/npm/kysely/dist/esm/index.js',
+    ],
+    hiddenPart: makeQueryEditorHeader(),
+    value:
+      '\
+// 上文已经注册 db 对象\
+',
   },
 };
-
-const JAVASCRIPT_SNIPPET = `
-// Need inspiration? Try common JavaScript utilities like debounce,
-// date validation, or number to currency!
-
-// Convert HTML string to DOM object
-function parseStringAsHtml(content, selector) {
-`;
-
-export const JavaScriptEditor: Story = {
-  args: {
-    ...baseParams,
-    language: 'javascript',
-    value: JAVASCRIPT_SNIPPET,
-  },
-};
-
-const GO_SNIPPET = `
-// Need inspiration? See how fast you can set up and use a logger.
-// Or scratch everything and use your imagination.
-
-package main
-
-import (
-	"fmt"
-	"log"
-)
-
-func main() {
-    // Configure log and create a new logger
-`;
-export const GoEditor: Story = {
-  args: {
-    ...baseParams,
-    language: 'go',
-    value: GO_SNIPPET,
-  },
-};
-
-const JAVA_SNIPPET = `
-// Need inspiration? Try adding additional conditions or other helper
-// functions on "widgets."
-// Or scratch everything and use your imagination.
-
-/**
- * @return ArrayList of all visible widgets
- */
-public ArrayList<Widget> getVisibleWidgets() {
-`;
-
-export const JavaEditor: Story = {
-  args: {
-    ...baseParams,
-    language: 'java',
-    value: JAVA_SNIPPET,
-  },
-};
-
-const CPP_SNIPPET = `
-// Need inspiration? Try finishing this Matrix class with constructors,
-// destructors, getter/setters, utilities like transpose, etc.
-// Or scratch everything and use your imagination.
-
-// 2D Matrix class
-template <class T>
-class Matrix() {
- public:
-  Matrix(int rows, int cols) {
-`;
-
-export const CppEditor: Story = {
-  args: {
-    ...baseParams,
-    language: 'cpp',
-    value: CPP_SNIPPET,
-  },
-};
-
-const MARKDOWN_SNIPPET = `# Readme Template
-Author: [Your Name]
-
-This is a template for your README.md file.
-
-## Features
-
-List of features:`;
-
-export const MarkdownEditor: Story = {
-  args: {
-    ...baseParams,
-    language: 'markdown',
-    value: MARKDOWN_SNIPPET,
-  },
-};
-
-export const PlainTextEditor: Story = {
-  decorators: (Story) => (
-    <div>
-      <h1>Plain Text</h1>
-      <textarea
-        style={{
-          width: '700px',
-          height: '100px',
-          border: '1px solid black',
-          borderRadius: '2px',
-          padding: '6px',
-          fontFamily: 'sans-serif',
-        }}
-        placeholder="Type something"
-      />
-      <Story />
-    </div>
-  ),
-  args: {
-    ...baseParams,
-    language: 'markdown',
-    value: 'This is a test textarea. Lorem',
-    multilineModelThreshold: 1.0,
-    containerStyle: {
-      border: '1px solid black',
-      borderRadius: '2px',
-      padding: '6px',
-    },
-    options: {
-      scrollbar: {
-        vertical: 'hidden',
-        horizontal: 'hidden',
-      },
-      renderControlCharacters: false,
-      glyphMargin: false,
-      rulers: [],
-      overviewRulerLanes: 0,
-      overviewRulerBorder: false,
-      wordWrap: 'on',
-      renderLineHighlight: 'none',
-      lineNumbers: 'off',
-      renderWhitespace: 'none',
-      hideCursorInOverviewRuler: true,
-      scrollBeyondLastLine: false,
-      smoothScrolling: true,
-      folding: false,
-      fontFamily: 'Helvetica',
-      fontSize: 13,
-      language: 'plaintext',
-      lineDecorationsWidth: 0,
-      minimap: {
-        enabled: false,
-      },
-      occurrencesHighlight: 'off',
-      cursorStyle: 'line-thin',
-      hover: {
-        enabled: false,
-      },
-      selectionHighlight: false,
-      find: {
-        seedSearchStringFromSelection: 'never',
-      },
-      multiCursorLimit: 1,
-      links: false,
-      matchBrackets: 'never',
-    },
-  },
-};
-
-const HTML_SNIPPET = `<html>
-  <head>
-    <title>Contact Form</title>
-  </head>
-  <body>
-    <h1>Contact Form</h1>
-    <p>I'm a simple contact form.</p>
-
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name-field-id" name="name" />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email-field-id" name="email" />
-    </form>
-  </body>
-</html>
-`;
 
 export const HTMLEditor: Story = {
   args: {
     ...baseParams,
     language: 'html',
-    value: HTML_SNIPPET,
+    value: `<html>Hello word</html>`,
   },
 };
+
+const HTML_SNIPPET = `\
+通过 typescript 实现验证规则
+返回类型要匹配
+interface Result {
+  success: boolean;
+  message?: string;
+}
+下方关键字为 api 获取后动态替换。
+关键字为：邮箱
+
+请以关键字为中心，通过正则、长度、及其他不同的维度判断，返回不同的结果。
+不能直接返回成功
+`;
 
 export const MultiFileContext: Story = {
   decorators: (Story) => (
     <div>
-      <h1>Multi File Context</h1>
-      <p>
-        Neighboring file at <code>index.html</code> passed into the{' '}
-        <code>otherDocuments</code> property:
-      </p>
       <code>
         <pre>{HTML_SNIPPET}</pre>
       </code>
@@ -252,24 +82,21 @@ export const MultiFileContext: Story = {
   ),
   args: {
     ...baseParams,
-    language: 'javascript',
+    language: 'typescript',
     options: {
       scrollbar: {
         vertical: 'hidden',
       },
     },
-    value: `// You have context over a sample HTML page.
-// Codeium's generation will take this context into account when suggesting.
-
-// Get the contact form values by ID.`,
+    value: ``,
     otherDocuments: [
       new Document({
-        absolutePath: '/index.html',
-        relativePath: 'index.html',
+        absolutePath: '/index.txt',
+        relativePath: 'index.txt',
         text: HTML_SNIPPET,
-        editorLanguage: 'html',
-        language: Language.HTML,
-      }),
+        editorLanguage: 'typescript',
+        language: Language.TYPESCRIPT,
+      } as unknown as any),
     ],
   },
 };
