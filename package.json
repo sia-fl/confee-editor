@@ -1,10 +1,10 @@
 {
   "name": "@sia-fl/confee-editor",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "confee-editor",
-  "main": "dist/confee-editor.js",
+  "main": "dist/index.js",
   "type": "module",
-  "module": "dist/confee-editor.js",
+  "module": "dist/index.js",
   "files": [
     "dist/**"
   ],
