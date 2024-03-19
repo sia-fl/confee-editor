@@ -21,7 +21,7 @@ import {
 import { uuid } from '../../utils/uuid';
 import { getCurrentURL, getPackageVersion } from '../../utils/identity';
 import { languageIdToEnum } from '../../utils/language';
-import { Status } from './CodeiumEditor';
+import { Status } from './ConfeeEditor';
 
 class MonacoInlineCompletion implements monaco.languages.InlineCompletion {
   readonly insertText: string;

@@ -3,7 +3,7 @@ import { Document as DocumentInfo } from '../../api/proto/exa/language_server_pb
 import { PromiseClient } from '@connectrpc/connect';
 import { MonacoCompletionProvider } from './CompletionProvider';
 import { LanguageServerService } from '../../api/proto/exa/language_server_pb/language_server_connect';
-import { Status } from './CodeiumEditor';
+import { Status } from './ConfeeEditor';
 
 declare module 'monaco-editor' {
   namespace editor {

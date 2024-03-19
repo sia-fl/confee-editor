@@ -32,16 +32,16 @@ yarn add @codeium/react-code-editor
 pnpm install @codeium/react-code-editor
 ```
 
-Now import the `CodeiumEditor` and enjoy lightning fast AI autocomplete, directly in your browser, 100% for free!
+Now import the `ConfeeEditor` and enjoy lightning fast AI autocomplete, directly in your browser, 100% for free!
 
 ```tsx
-import { CodeiumEditor } from "@codeium/react-code-editor";
+import { ConfeeEditor } from "@codeium/react-code-editor";
 
 export const IdeWithAutocomplete = () => {
   return (
     <div>
       <p>Here's an AI-powered Python editor using Codeium.</p>
-      <CodeiumEditor language="python" theme="vs-dark" />
+      <ConfeeEditor language="python" theme="vs-dark" />
     </div>
   );
 };
@@ -50,7 +50,7 @@ export const IdeWithAutocomplete = () => {
 Here's an advanced example that uses multi-document context to provide more intelligent autocompletion:
 
 ```tsx
-import { CodeiumEditor, Document, Language } from "@codeium/react-code-editor";
+import { ConfeeEditor, Document, Language } from "@codeium/react-code-editor";
 
 export const JavaScriptEditorWithContext = () => {
   const html = `<html>
@@ -68,7 +68,7 @@ export const JavaScriptEditorWithContext = () => {
   return (
     <div>
       <p>This editor has context awareness of a neighboring HTML file and can provide better autocompletion suggestions.</p>
-      <CodeiumEditor
+      <ConfeeEditor
         language="javascript"
         theme="vs-dark"
         otherDocuments={[
@@ -112,11 +112,11 @@ The core API of the editor is the same as that of the wrapped project. You can v
 
 #### How can I import the ESM version of this?
 
-To import the ESM version of this, you can use `import { CodeiumEditor } from "@codeium/react-code-editor/dist/esm";`. If you're using TypeScript, your editor might warn that the types are missing. A current workaround is:
+To import the ESM version of this, you can use `import { ConfeeEditor } from "@codeium/react-code-editor/dist/esm";`. If you're using TypeScript, your editor might warn that the types are missing. A current workaround is:
 
 - Create a `codeiumeditor.d.ts` file,
 - Add `declare module '@codeium/react-code-editor/dist/esm';` to the file
-- Import the types file in the file using the `CodeiumEditor` component.
+- Import the types file in the file using the `ConfeeEditor` component.
 
 This is an open issue in terms of supporting both CommonJS and ESM. If you're interested in contributing and have a fix for this, pull requests are welcome.
 

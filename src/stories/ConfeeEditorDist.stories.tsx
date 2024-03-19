@@ -2,15 +2,15 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { CodeiumEditor } from '../components';
+import { ConfeeEditor } from '../../dist';
 import { makeQueryEditorHeader } from '../libs/kyely';
 import { Document, Language } from '../models';
 import React from 'react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta: Meta<typeof CodeiumEditor> = {
-  title: 'Example/Editor',
-  component: CodeiumEditor,
+const meta: Meta<typeof ConfeeEditor> = {
+  title: 'Dist/Editor',
+  component: ConfeeEditor,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -19,7 +19,7 @@ const meta: Meta<typeof CodeiumEditor> = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {},
-} satisfies Meta<typeof CodeiumEditor>;
+} satisfies Meta<typeof ConfeeEditor>;
 
 export default meta;
 
@@ -50,7 +50,7 @@ export const HTMLEditor: Story = {
   args: {
     ...baseParams,
     language: 'html',
-    value: `<html>Hello word</html>`,
+    value: `<html lang="en">Hello word</html>`,
   },
 };
 
@@ -88,7 +88,23 @@ export const MultiFileContext: Story = {
         vertical: 'hidden',
       },
     },
-    value: ``,
+    hiddenPart: `\
+interface Result {
+  success: boolean;
+  message?: string;
+}
+`,
+    value: `\
+function validate(v: any) {
+  // 正则判断
+  // 长度判断
+  // 其他判断
+  return {
+    success: true,
+    message: 'success'
+  }
+}
+`,
     otherDocuments: [
       new Document({
         absolutePath: '/index.txt',

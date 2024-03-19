@@ -1,1 +1,1 @@
-export * from './CodeiumEditor/CodeiumEditor';
+export * from './Editor/ConfeeEditor';
