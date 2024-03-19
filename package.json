@@ -1,5 +1,5 @@
 {
-  "name": "confee-editor",
+  "name": "@sia-fl/confee-editor",
   "version": "0.0.1",
   "description": "confee-editor",
   "main": "dist/confee-editor.js",
@@ -8,7 +8,13 @@
   "files": [
     "dist/**"
   ],
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sia-fl/confee-editor.git"
+  },
+  "publishConfig": {
+    "@sia-fl:registry": "https://npm.pkg.github.com"
+  },
   "types": "dist/index.d.ts",
   "engines": {
     "node": ">=16"
@@ -23,10 +29,6 @@
     "build-storybook": "storybook build",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
     "prepare": "pnpm run generate && pnpm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Exafunction/codeium-react-code-editor.git"
   },
   "author": "Codeium",
   "license": "ISC",
