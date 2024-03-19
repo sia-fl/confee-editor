@@ -103,7 +103,7 @@ export interface ConfeeEditorRef {
   addLib: (content: string, pathname: string, schema?: string) => void;
 }
 
-export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
+export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
   (
     {
       languageServerAddress = 'https://web-backend.codeium.com',
@@ -139,12 +139,21 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
       return createPromiseClient(LanguageServerService, transport);
     }, [transport]);
 
+    // noinspection JSUnusedGlobalSymbols
     useImperativeHandle<any, ConfeeEditorRef>(ref, () => ({
       addLib(content: string, pathname: string, schema: string = modelSchema) {
         monaco.languages.typescript.typescriptDefaults.addExtraLib(
           content,
           schema + pathname,
         );
+      },
+      setLibs(
+        libs: {
+          content: string;
+          filePath?: string;
+        }[],
+      ) {
+        monaco.languages.typescript.typescriptDefaults.setExtraLibs(libs);
       },
     }));
 
@@ -319,12 +328,9 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
         //   });
         // }
 
-        model.onDidChangeContent((e) => {
-          const change = e.changes[0]?.text;
-          if (!change) {
-            return;
-          }
+        model.setValue((hiddenPart || '') + (propValue || ''));
 
+        model.onDidChangeContent((e) => {
           /**
            * 获取从 startLine 到 endLine 中间的内容
            */
@@ -334,9 +340,15 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
             endLineNumber: endLine,
             endColumn: 9999,
           });
+          console.log(data);
           if (data !== propValue) {
             setPropValue(data);
           }
+          const change = e.changes[0]?.text;
+          if (!change) {
+            return;
+          }
+
           if (["'", '"'].findIndex((it) => change.startsWith(it)) !== -1) {
             setTimeout(() => {
               editor.trigger(null, 'editor.action.triggerSuggest', null);
@@ -474,21 +486,21 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
         if (data !== propValue) {
           const newValues = (hiddenPart || '') + (propValue || '');
           myEditor.setValue(newValues);
-          if (hiddenPart) {
-            const end = hiddenPart.split('\n').length - 1;
-            // @ts-ignore
-            myEditor.setHiddenAreas([
-              {
-                startLineNumber: 1,
-                startColumn: 0,
-                endLineNumber: end,
-                endColumn: 0,
-              },
-            ]);
-          }
+        }
+        if (hiddenPart) {
+          const end = hiddenPart.split('\n').length - 1;
+          // @ts-ignore
+          myEditor.setHiddenAreas([
+            {
+              startLineNumber: 1,
+              startColumn: 0,
+              endLineNumber: end,
+              endColumn: 0,
+            },
+          ]);
         }
       }
-    }, [mounted, myEditor, propValue]);
+    }, [mounted, myEditor, hiddenPart, propValue]);
 
     useUnmount(() => {
       // 将 modelPathname 的 model 从内存中移除
