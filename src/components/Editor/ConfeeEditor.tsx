@@ -94,6 +94,11 @@ export enum Status {
   ERROR = 'error',
 }
 
+/**
+ * 取行内内容
+ */
+const endLine = 9999999;
+
 export interface ConfeeEditorRef {
   addLib: (content: string, pathname: string, schema?: string) => void;
 }
@@ -115,6 +120,7 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
     ref,
   ) => {
     modelPathname = modelSchema + modelPathname;
+    const startLine = hiddenPart?.split('\n').length as number;
     const [propValue, setPropValue] = useControllableValue<string>(props);
     const monacoRef = useRef<Monaco | null>(null);
     const inlineCompletionsProviderRef =
@@ -318,13 +324,18 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
           if (!change) {
             return;
           }
+
           /**
-           * 取 hidePart 之后的内容
+           * 获取从 startLine 到 endLine 中间的内容
            */
-          if (hiddenPart) {
-            setPropValue(model.getValue().slice(hiddenPart.split('\n').length));
-          } else {
-            setPropValue(model.getValue());
+          const data = model.getValueInRange({
+            startLineNumber: startLine,
+            startColumn: 1,
+            endLineNumber: endLine,
+            endColumn: 9999,
+          });
+          if (data !== propValue) {
+            setPropValue(data);
           }
           if (["'", '"'].findIndex((it) => change.startsWith(it)) !== -1) {
             setTimeout(() => {
@@ -454,8 +465,15 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
 
     useEffect(() => {
       if (mounted && myEditor) {
-        if (myEditor) {
-          myEditor.setValue(hiddenPart + (propValue || ''));
+        const data = myEditor.getModel()?.getValueInRange({
+          startLineNumber: startLine,
+          startColumn: 1,
+          endLineNumber: endLine,
+          endColumn: 9999,
+        });
+        if (data !== propValue) {
+          const newValues = (hiddenPart || '') + (propValue || '');
+          myEditor.setValue(newValues);
           if (hiddenPart) {
             const end = hiddenPart.split('\n').length - 1;
             // @ts-ignore
@@ -470,7 +488,7 @@ export const ConfeeEditor: React.FC<CodeiumEditorProps> = forwardRef(
           }
         }
       }
-    }, [mounted, myEditor, props.value]);
+    }, [mounted, myEditor, propValue]);
 
     useUnmount(() => {
       // 将 modelPathname 的 model 从内存中移除
