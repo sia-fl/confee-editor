@@ -101,6 +101,9 @@ const endLine = 9999999;
 
 export interface ConfeeEditorRef {
   addLib: (content: string, pathname: string, schema?: string) => void;
+  ezAddLib: (name: string, content: string) => void;
+  setLibs: (libs: { content: string; filePath?: string }[]) => void;
+  ezSetLib: (name: string, content: string) => void;
 }
 
 export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
@@ -147,6 +150,29 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
           schema + pathname,
         );
       },
+      ezAddLib(name: string, content: string) {
+        name = `file:///node_modules/${name}/index.d.ts`;
+        const libs =
+          monaco.languages.typescript.typescriptDefaults.getExtraLibs();
+        if (!libs['file:///package.json']) {
+          libs['file:///package.json'] = {
+            version: 0,
+            content: JSON.stringify({ dependencies: {} }),
+          };
+        }
+        const data = JSON.parse(libs['file:///package.json'].content);
+        data.dependencies[name] = '*';
+        monaco.languages.typescript.typescriptDefaults.setExtraLibs([
+          {
+            content,
+            filePath: name,
+          },
+          {
+            content: JSON.stringify(data),
+            filePath: 'file:///package.json',
+          },
+        ]);
+      },
       setLibs(
         libs: {
           content: string;
@@ -154,6 +180,15 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
         }[],
       ) {
         monaco.languages.typescript.typescriptDefaults.setExtraLibs(libs);
+      },
+      ezSetLib(name: string, content: string) {
+        name = `file:///node_modules/${name}/index.d.ts`;
+        monaco.languages.typescript.typescriptDefaults.setExtraLibs([
+          {
+            content,
+            filePath: name,
+          },
+        ]);
       },
     }));
 
