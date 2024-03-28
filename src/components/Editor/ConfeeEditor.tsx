@@ -104,6 +104,7 @@ export interface ConfeeEditorRef {
   ezAddLib: (name: string, content: string) => void;
   setLibs: (libs: { content: string; filePath?: string }[]) => void;
   ezSetLib: (name: string, content: string) => void;
+  getValue: () => string;
 }
 
 export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
@@ -190,6 +191,15 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
           },
         ]);
       },
+      getValue(){
+        const data = myEditor?.getModel()?.getValueInRange({
+          startLineNumber: startLine,
+          startColumn: 1,
+          endLineNumber: endLine,
+          endColumn: 9999,
+        });
+        return data || ''
+      }
     }));
 
     useMount(() => {

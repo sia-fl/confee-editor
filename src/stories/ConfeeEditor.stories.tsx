@@ -2,10 +2,10 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ConfeeEditor } from '../components/Editor/ConfeeEditor';
+import { ConfeeEditor, ConfeeEditorRef } from '../components/Editor/ConfeeEditor';
 import { makeQueryEditorHeader } from '../libs/kyely';
 import { Document, Language } from '../models';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof ConfeeEditor> = {
@@ -16,16 +16,21 @@ const meta: Meta<typeof ConfeeEditor> = {
 // 上文已经注册 db 对象\
 ',
     );
+    const editRef = useRef<ConfeeEditorRef>(null);
 
-    return (
+    return <>
+      {/*<button onClick={() => {*/}
+      {/*  editRef.current?.getValue()*/}
+      {/*}}>getValue</button>*/}
       <ConfeeEditor
         {...props}
+        ref={editRef}
         value={v}
         onChange={(v2) => {
           setV(v2 as string);
         }}
       />
-    );
+    </>;
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
