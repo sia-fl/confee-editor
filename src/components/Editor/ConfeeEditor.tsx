@@ -421,7 +421,7 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
          */
         if (packages) {
           const dependencies: Record<string, any> = {};
-          if (importMode === 'main') {
+          if (importMode.startsWith('main')) {
             for (const v of packages) {
               dependencies[v] = '*';
             }
@@ -472,7 +472,7 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
             );
             return;
           }
-          const url = 'http://192.168.99.190:4999/esm/types';
+          const url = 'https://192.168.99.190:4999/esm/types';
           fetch(url, {
             method: 'POST',
             headers: {
