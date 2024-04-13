@@ -104,6 +104,7 @@ export interface ConfeeEditorRef {
   ezAddLib: (name: string, content: string) => void;
   setLibs: (libs: { content: string; filePath?: string }[]) => void;
   ezSetLib: (name: string, content: string) => void;
+  getValue: () => string;
 }
 
 export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
@@ -190,6 +191,15 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
           },
         ]);
       },
+      getValue(){
+        const data = myEditor?.getModel()?.getValueInRange({
+          startLineNumber: startLine,
+          startColumn: 1,
+          endLineNumber: endLine,
+          endColumn: 9999,
+        });
+        return data || ''
+      }
     }));
 
     useMount(() => {
@@ -413,7 +423,7 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
          */
         if (packages) {
           const dependencies: Record<string, any> = {};
-          if (importMode === 'main') {
+          if (importMode.startsWith('main')) {
             for (const v of packages) {
               dependencies[v] = '*';
             }

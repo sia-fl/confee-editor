@@ -1,6 +1,6 @@
 {
   "name": "@sia-fl/confee-editor",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "confee-editor",
   "main": "dist/index.js",
   "type": "module",

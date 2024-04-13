@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ConfeeEditor } from '../components/Editor/ConfeeEditor';
+import { ConfeeEditor } from '../components';
 import { makeQueryEditorHeader } from '../libs/kyely';
 import { Document, Language } from '../models';
 import React, { useState } from 'react';
@@ -46,7 +46,7 @@ const baseParams = {
   height: '500px',
 };
 
-export const TypescriptEdit: Story = {
+export const TypescriptImport: Story = {
   args: {
     ...baseParams,
     packages: [
