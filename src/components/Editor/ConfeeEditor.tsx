@@ -260,6 +260,8 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
         },
       };
       monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+        experimentalDecorators: true,
+        emitDecoratorMetadata: true,
         moduleResolution:
           monaco.languages.typescript.ModuleResolutionKind.NodeJs,
         module: monaco.languages.typescript.ModuleKind.ESNext,
@@ -406,7 +408,7 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
     const { run } = useRequest(
       async () => {
         /**
-         * 请求 http://192.168.99.190:4999/esm/types
+         * 请求 https://airco.cc/conside/esm/types
          * json 格式，传递 pathnames
          */
         if (packages) {
@@ -462,7 +464,7 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
             );
             return;
           }
-          const url = 'http://192.168.99.190:4999/esm/types';
+          const url = 'https://airco.cc/conside/esm/types';
           fetch(url, {
             method: 'POST',
             headers: {

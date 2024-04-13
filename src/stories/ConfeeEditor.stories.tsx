@@ -46,6 +46,20 @@ const baseParams = {
   height: '500px',
 };
 
+export const TypescriptEdit: Story = {
+  args: {
+    ...baseParams,
+    packages: [
+      'https://deno.land/x/hono@v4.1.0/mod.ts',
+      'https://deno.land/x/doa@v1.0.0/mod.ts',
+      'https://cdn.jsdelivr.net/npm/kysely/dist/esm/index.js',
+    ],
+    value:
+      '\
+',
+  },
+};
+
 export const TypescriptContext: Story = {
   args: {
     ...baseParams,
