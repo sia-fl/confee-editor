@@ -439,11 +439,9 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
           > = {};
           if (cached) {
             try {
-              const data = JSON.parse(cached);
-              if (Array.isArray(data)) {
-                data.map((it) => {
-                  cachedPackages[it] = it;
-                });
+              const data:any = JSON.parse(cached)  || {};
+              for (const pk in data) {
+                cachedPackages[pk] = data[pk];
               }
             } catch (e) {
               console.log(e);
@@ -483,9 +481,8 @@ export const ConfeeEditor = forwardRef<{}, CodeiumEditorProps>(
             body: JSON.stringify({
               pathnames: needRequest,
             }),
-          })
-            .then((res) => res.json())
-            .then((res) => {
+          }) .then(async (rsp) => {
+              let res = await rsp.json()
               const data: Record<
                 string,
                 {
